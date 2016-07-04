@@ -34,7 +34,7 @@ LocationIntelligenceSDK-JavaScript facilitates you to build Web applications usi
 ### Getting Started
 To get started with JavaScript SDK, you must first register at [Location Intelligence API Home Page](http://developer.pitneybowes.com/en/location-intelligence.html) and obtain your API Key and Secret to get started with the JavaScript SDK and call Location Intelligence APIs.
 For more information refer to [‘Getting Started with JavaScript SDK’](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html#Java%20Script%20SDK/js_intro.html) section in documentation.
-Please include dependency of jQuery 2.0.0 while using LocationIntelligenceSDK-JavaScript
+Please include dependency of jQuery 2.2.0 while using LocationIntelligenceSDK-JavaScript
 
 ### Running test Cases
 Please update LocationIntelligenceSDK-JavaScript Test cases with AccessToken to execute them.  
