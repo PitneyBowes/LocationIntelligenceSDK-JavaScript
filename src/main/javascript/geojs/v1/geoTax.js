@@ -84,3 +84,71 @@ GEOAPIS_V1.geoTax.prototype.getTaxByLocation = function(params, callback){
 		return this.response;
 	}
 };
+/**
+ * Set API URL to post tax rate by address
+ * @param Object {taxType: Auto/General/Medical/Construction (required), preferences: The matching and geocoding options (optional), taxRateAddresses: The address or addresses (required)}
+ * @param String callback method name (optional)
+ * @return response object or calls callback
+ */
+GEOAPIS_V1.geoTax.prototype.getAdvancedTaxRateByAddress = function(params, callback){
+	var apiUrl = '/geotax/v1/taxrate/'+encodeURIComponent(params.taxType)+'/byaddress';
+	var postData = '{"preferences":'+params.preferences+', "taxRateAddresses":'+params.taxRateAddresses+'}';
+	if(callback !== undefined){
+		this.callPostApiAsync(apiUrl, postData, callback);
+	}
+	else{
+		this.callPostApi(apiUrl, postData);
+		return this.response;
+	}
+};
+/**
+ * Set API URL to post tax rate by location
+ * @param Object {taxType: Auto/General/Medical/Construction (required), preferences: The matching and geocoding options (optional), locations: The input coordinates or multiple input coordinates (required)}
+ * @param String callback method name (optional)
+ * @return response object or calls callback
+ */
+GEOAPIS_V1.geoTax.prototype.getAdvancedTaxRateByLocation = function(params, callback){
+	var apiUrl = '/geotax/v1/taxrate/'+encodeURIComponent(params.taxType)+'/bylocation';
+	var postData = '{"preferences":'+params.preferences+', "locations":'+params.locations+'}';
+	if(callback !== undefined){
+		this.callPostApiAsync(apiUrl, postData, callback);
+	}
+	else{
+		this.callPostApi(apiUrl, postData);
+		return this.response;
+	}
+};
+/**
+ * Set API URL to post tax by address
+ * @param Object {taxType: Auto/General/Medical/Construction (required), preferences: The matching and geocoding options (optional), taxRateAddresses: The address or addresses with purchase amount (required)}
+ * @param String callback method name (optional)
+ * @return response object or calls callback
+ */
+GEOAPIS_V1.geoTax.prototype.getAdvancedTaxByAddress = function(params, callback){
+	var apiUrl = '/geotax/v1/tax/'+encodeURIComponent(params.taxType)+'/byaddress';
+	var postData = '{"preferences":'+params.preferences+', "taxAddresses":'+params.taxAddresses+'}';
+	if(callback !== undefined){
+		this.callPostApiAsync(apiUrl, postData, callback);
+	}
+	else{
+		this.callPostApi(apiUrl, postData);
+		return this.response;
+	}
+};
+/**
+ * Set API URL to post tax by location
+ * @param Object {taxType: Auto/General/Medical/Construction (required), preferences: The matching and geocoding options (optional), locations: The input coordinates or multiple input coordinates with purchase amount (required)}
+ * @param String callback method name (optional)
+ * @return response object or calls callback
+ */
+GEOAPIS_V1.geoTax.prototype.getAdvancedTaxByLocation = function(params, callback){
+	var apiUrl = '/geotax/v1/tax/'+encodeURIComponent(params.taxType)+'/bylocation';
+	var postData = '{"preferences":'+params.preferences+', "locations":'+params.locations+'}';
+	if(callback !== undefined){
+		this.callPostApiAsync(apiUrl, postData, callback);
+	}
+	else{
+		this.callPostApi(apiUrl, postData);
+		return this.response;
+	}
+};

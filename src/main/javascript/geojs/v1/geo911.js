@@ -52,3 +52,35 @@ GEOAPIS_V1.geo911.prototype.getPSAPByLocation = function(params, callback){
 		return this.response;
 	}
 };
+/**
+ * Set API URL to get AHJ by address
+ * @param Object {address: free-form text} (required)
+ * @param String callback method name (optional)
+ * @return response object or calls callback
+ */
+GEOAPIS_V1.geo911.prototype.getAHJPLUSPSAPByAddress = function(params, callback){
+	var apiUrl = '/geo911/v1/ahj-psap/byaddress?address='+encodeURIComponent(params.address);
+	if(callback !== undefined){
+		this.callApiAsync(apiUrl, callback);
+	}
+	else{
+		this.callApi(apiUrl);
+		return this.response;
+	}
+};
+/**
+ * Set API URL to get AHJ by location
+ * @param Object {latitude: float, longitude: float} (required)
+ * @param String callback method name (optional)
+ * @return response object or calls callback
+ */
+GEOAPIS_V1.geo911.prototype.getAHJPLUSPSAPByLocation = function(params, callback){
+	var apiUrl = '/geo911/v1/ahj-psap/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude);
+	if(callback !== undefined){
+		this.callApiAsync(apiUrl, callback);
+	}
+	else{
+		this.callApi(apiUrl);
+		return this.response;
+	}
+};
