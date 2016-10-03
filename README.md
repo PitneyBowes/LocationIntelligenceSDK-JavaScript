@@ -58,7 +58,7 @@ Please update LocationIntelligenceSDK-JavaScript Test cases with AccessToken to 
 * Leaflet, version number 1.0.0 which is licensed under the BSD-2-ClauseLicense.  The license can be downloaded from: https://github.com/Leaflet/Leaflet/blob/master/LICENSE.  The source code for this software is available from http://leafletjs.com/.
 
 
-### Map Attributions for Maps
+### Map Attributions
 
 You must provide attribution on all Raster and Vector map as described in [Appendix- Map Attribution](https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/index.html#Appendix/appendix_o_mapattribution.html). Using Pitney Bowes Maps does not eliminate your responsibility to provide attribution.
 
