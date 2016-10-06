@@ -23,7 +23,7 @@ styles:
 sources:
     mapzen:
         type: GeoJSON
-        url: https://api-qa.pitneybowes.com/location-intelligence/geomap/v1/tile/osm/{z}/{x}/{y}.geojson?api_key=KAKSbh6mt0ZjCAVYffAfwquittyDLh1J
+        url: https://api.pitneybowes.com/location-intelligence/geomap/v1/tile/osm/{z}/{x}/{y}.geojson?api_key='<your api_key here>'
 #------------------------------------------------
 layers:
 
