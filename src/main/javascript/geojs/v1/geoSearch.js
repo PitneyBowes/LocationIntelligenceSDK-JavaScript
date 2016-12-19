@@ -27,8 +27,9 @@ GEOAPIS_V1_INHERIT(GEOAPIS_V1.baseService, GEOAPIS_V1.geoSearch);
  * @return response object or calls callback
  */
 GEOAPIS_V1.geoSearch.prototype.getLocation = function(params, callback){
-	var apiUrl = '/geosearch/v1/locations?searchText='+encodeURIComponent(params.searchText)+'&latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude);
-	var optionalList = ['maxCandidates', 'searchRadius', 'searchRadiusUnit'];
+	var apiUrl = '/geosearch/v1/locations?searchText='+encodeURIComponent(params.searchText);
+	
+	var optionalList = ['latitude','longitude','country','maxCandidates', 'searchRadius', 'searchRadiusUnit'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
