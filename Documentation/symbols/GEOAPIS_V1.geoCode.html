@@ -198,13 +198,23 @@ ul.inheritsList
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoCode.html">GEOAPIS_V1.geoCode</a></li>
 	
+	<li><a href="../symbols/GEOAPIS_V1.geoComm.html">GEOAPIS_V1.geoComm</a></li>
+	
 	<li><a href="../symbols/GEOAPIS_V1.geoEnhance.html">GEOAPIS_V1.geoEnhance</a></li>
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoLife.html">GEOAPIS_V1.geoLife</a></li>
 	
+	<li><a href="../symbols/GEOAPIS_V1.geoMap.html">GEOAPIS_V1.geoMap</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoRisk.html">GEOAPIS_V1.geoRisk</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoRoute.html">GEOAPIS_V1.geoRoute</a></li>
+	
 	<li><a href="../symbols/GEOAPIS_V1.geoSearch.html">GEOAPIS_V1.geoSearch</a></li>
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoTax.html">GEOAPIS_V1.geoTax</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoZone.html">GEOAPIS_V1.geoZone</a></li>
 	
 </ul>
 <hr />
@@ -226,7 +236,7 @@ ul.inheritsList
 A geoCode object
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/E__LBS_Branches_Release 2.0_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoCode.js.html">geoCode.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/E__lbs_trunk_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoCode.js.html">geoCode.js</a>.
 				
 			</p>
 
@@ -274,7 +284,7 @@ A geoCode object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getCapabilities">getCapabilities</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getCapabilities">getCapabilities</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get capabilities</div>
 							</td>
@@ -283,7 +293,7 @@ A geoCode object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getConfigureDictionary">getConfigureDictionary</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getConfigureDictionary">getConfigureDictionary</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get configure dictionary</div>
 							</td>
@@ -292,7 +302,7 @@ A geoCode object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getGeocode">getGeocode</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getGeocode">getGeocode</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get forward geocode</div>
 							</td>
@@ -301,7 +311,7 @@ A geoCode object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getGeocodeAdvanced">getGeocodeAdvanced</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getGeocodeAdvanced">getGeocodeAdvanced</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to post forward geocode</div>
 							</td>
@@ -310,7 +320,7 @@ A geoCode object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getReverseGeocode">getReverseGeocode</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getReverseGeocode">getReverseGeocode</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get reverse geocode</div>
 							</td>
@@ -319,7 +329,7 @@ A geoCode object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getReverseGeocodeAdvance">getReverseGeocodeAdvance</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoCode.html#getReverseGeocodeAdvance">getReverseGeocodeAdvance</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to post reverse geocode</div>
 							</td>
@@ -386,7 +396,7 @@ A geoCode object
 					<div class="fixedFont">
 					
 					
-					<b>getCapabilities</b>(Object, String)
+					<b>getCapabilities</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -409,10 +419,10 @@ A geoCode object
 								<dd>{bundleType: basic/premium (required), country: string ISO country code(optional), operation: string operation type(optional)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -423,7 +433,7 @@ A geoCode object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -436,7 +446,7 @@ A geoCode object
 					<div class="fixedFont">
 					
 					
-					<b>getConfigureDictionary</b>(Object, String)
+					<b>getConfigureDictionary</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -459,10 +469,10 @@ A geoCode object
 								<dd>{bundleType: basic/premium (required), country: string ISO country code (optional)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -473,7 +483,7 @@ A geoCode object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -486,7 +496,7 @@ A geoCode object
 					<div class="fixedFont">
 					
 					
-					<b>getGeocode</b>(Object, String)
+					<b>getGeocode</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -509,10 +519,10 @@ A geoCode object
 								<dd>{bundleType: basic/premium (required), country: string ISO country code(optional), mainAddress: string (optional), placeName: string (optional), lastLine: string (optional), areaName1: string (optional), areaName2: string (optional), areaName3: string (optional), areaName4: string (optional), postCode1: string (optional), postCode2: string (optional), matchMode: string (optional), fallbackGeo: boolean (optional), fallbackPostal: boolean (optional), maxCands: integer (optional), streetOffset: float (optional), streetOffsetUnits: string (optional), cornerOffset: float (optional), cornerOffsetUnits: string (optional)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -523,7 +533,7 @@ A geoCode object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -536,7 +546,7 @@ A geoCode object
 					<div class="fixedFont">
 					
 					
-					<b>getGeocodeAdvanced</b>(Object, String)
+					<b>getGeocodeAdvanced</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -559,10 +569,10 @@ A geoCode object
 								<dd>{bundleType: basic/premium (required), type: ADDRESS/GEOGRAPHIC/POSTAL (optional), preferences: The matching and geocoding options (optional), addresses: The address or addresses to be geocoded (required)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -573,7 +583,7 @@ A geoCode object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -586,7 +596,7 @@ A geoCode object
 					<div class="fixedFont">
 					
 					
-					<b>getReverseGeocode</b>(Object, String)
+					<b>getReverseGeocode</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -609,10 +619,10 @@ A geoCode object
 								<dd>{bundleType: basic/premium (required), x: float (required), y: float (required), country: string ISO country code (optional), coordSysName: string (optional), distance: float (optional), distanceUnits: string (optional)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -623,7 +633,7 @@ A geoCode object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -636,7 +646,7 @@ A geoCode object
 					<div class="fixedFont">
 					
 					
-					<b>getReverseGeocodeAdvance</b>(Object, String)
+					<b>getReverseGeocodeAdvance</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -659,10 +669,10 @@ A geoCode object
 								<dd>{bundleType: basic/premium (required), preferences: The matching options (optional), points: The input coordinates or multiple input coordinates to be reverse geocoded (required)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -673,7 +683,7 @@ A geoCode object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -690,7 +700,7 @@ A geoCode object
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Mon Jun 27 2016 01:00:04 GMT+0530 (IST)
+			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Fri Apr 07 2017 15:38:35 GMT+0530 (IST)
 		</div>
 	</body>
 </html>

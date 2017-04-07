@@ -2,7 +2,6 @@ describe("GeoEnhance Test Suite: getAddress", function(){
 	var GE;	
 	beforeEach(function() {
 		GE = new GEOAPIS_V1.geoEnhance('<Put your Token Here>');
-		GE.apiAddress = 'https://api.pitneybowes.com/location-intelligence';
 	});
     it("GeoEnhance Address Valid Parameters", function () {
         var geo = GE.getAddress({latitude:42.5309, longitude:-73.6572, searchRadius:3000, searchRadiusUnit:'feet'});
@@ -56,7 +55,6 @@ describe("GeoEnhance Test Suite: getPlace", function(){
 	var GE;	
 	beforeEach(function() {
 		GE = new GEOAPIS_V1.geoEnhance('<Put your Token Here>');
-		GE.apiAddress = 'https://api.pitneybowes.com/location-intelligence';
 	});
     it("GeoEnhance Place Valid Parameters", function () {
         var geo = GE.getPlace({latitude:42.5309, longitude:-73.6572, levelHint:2});
@@ -110,7 +108,6 @@ describe("GeoEnhance Test Suite: getPOI", function(){
 	var GE;	
 	beforeEach(function() {
 		GE = new GEOAPIS_V1.geoEnhance('<Put your Token Here>');
-		GE.apiAddress = 'https://api.pitneybowes.com/location-intelligence';
 	});
     it("GeoEnhance POI Valid Parameters", function () {
         var geo = GE.getPOI({latitude:42.5309, longitude:-73.6572, category:1023, searchRadius:20, maxCandidates:10, searchRadiusUnit:'MILES', searchPriority:'N', searchDataset:'PBData'});
@@ -163,7 +160,6 @@ describe("GeoEnhance Test Suite: getTimezone", function(){
 	var GE;	
 	beforeEach(function() {
 		GE = new GEOAPIS_V1.geoEnhance('<Put your Token Here>');
-		GE.apiAddress = 'https://api.pitneybowes.com/location-intelligence';
 	});
     it("GeoEnhance Timezone Valid Parameters", function () {
         var geo = GE.getTimezone({latitude:42.5309, longitude:-73.6572, timestamp:1434539197149});

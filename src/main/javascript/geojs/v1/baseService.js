@@ -24,15 +24,15 @@ var GEOAPIS_V1 = GEOAPIS_V1 || {};
  */
 GEOAPIS_V1.baseService = function(accessToken){
 	this.accessToken = 'Bearer '+accessToken;
-	this.apiAddress = 'https://api.pitneybowes.com/location-intelligence/';
+	this.apiAddress = 'https://api.pitneybowes.com/location-intelligence';
 	this.response = {};
 };
 /**
  * Call API URL and set response property
- * @param string relative apiUrl
+ * @param String relative apiUrl
  */
 GEOAPIS_V1.baseService.prototype.callApi = function(apiUrl){
-	var request=null;
+	var request = null;
 	this.response = {};
 	this.response.httpResponse = {};
 	try {
@@ -69,11 +69,11 @@ GEOAPIS_V1.baseService.prototype.callApi = function(apiUrl){
 };
 /**
  * Call API URL and set response property
- * @param string relative apiUrl
- * @param string callback method name
+ * @param String relative apiUrl
+ * @callback {callback: User defined callback}
  */
 GEOAPIS_V1.baseService.prototype.callApiAsync = function(apiUrl, callback){
-	var request = $.ajax({
+	$.ajax({
 		url: this.apiAddress+apiUrl,			
 		type: 'GET',
 		async: true,
@@ -94,9 +94,8 @@ GEOAPIS_V1.baseService.prototype.callApiAsync = function(apiUrl, callback){
 		else{
 			this.response.status = 'failed';
 		}
-		/*jslint evil: true */
-		var callbacks = eval(callback);
-		if(callbacks !== undefined && callbacks !== null){
+		if(callback !== undefined && callback !== null){
+			var callbacks = callback;
 			callbacks(this.response);
 		}
 		else{
@@ -116,9 +115,8 @@ GEOAPIS_V1.baseService.prototype.callApiAsync = function(apiUrl, callback){
 			this.response.response.errors = [];
 			this.response.response.errors.push({errorCode:"GE0001",errorDescription:"Internal server error encountered."});
 		}
-		/*jslint evil: true */
-		var callbacks = eval(callback);
-		if(callbacks !== undefined && callbacks !== null){
+		if(callback !== undefined && callback !== null){
+			var callbacks = callback;
 			callbacks(this.response);
 		}
 		else{
@@ -128,10 +126,10 @@ GEOAPIS_V1.baseService.prototype.callApiAsync = function(apiUrl, callback){
 };
 /**
  * Call API URL and set response property
- * @param string relative apiUrl
+ * @param String relative apiUrl
  */
 GEOAPIS_V1.baseService.prototype.callPostApi = function(apiUrl, postData){
-	var request=null;
+	var request = null;
 	this.response = {};
 	this.response.httpResponse = {};
 	try {
@@ -169,11 +167,12 @@ GEOAPIS_V1.baseService.prototype.callPostApi = function(apiUrl, postData){
 };
 /**
  * Call API URL and set response property
- * @param string relative apiUrl
- * @param string callback method name
+ * @param String relative apiUrl
+ * @param Object post data
+ * @callback {callback: User defined callback}
  */
 GEOAPIS_V1.baseService.prototype.callPostApiAsync = function(apiUrl, postData, callback){
-	var request = $.ajax({
+	$.ajax({
 		url: this.apiAddress+apiUrl,			
 		type: 'POST',
 		data: postData,
@@ -195,9 +194,8 @@ GEOAPIS_V1.baseService.prototype.callPostApiAsync = function(apiUrl, postData, c
 		else{
 			this.response.status = 'failed';
 		}
-		/*jslint evil: true */
-		var callbacks = eval(callback);
-		if(callbacks !== undefined && callbacks !== null){
+		if(callback !== undefined && callback !== null){
+			var callbacks = callback;
 			callbacks(this.response);
 		}
 		else{
@@ -217,9 +215,8 @@ GEOAPIS_V1.baseService.prototype.callPostApiAsync = function(apiUrl, postData, c
 			this.response.response.errors = [];
 			this.response.response.errors.push({errorCode:"GE0001",errorDescription:"Internal server error encountered."});
 		}
-		/*jslint evil: true */
-		var callbacks = eval(callback);
-		if(callbacks !== undefined && callbacks !== null){
+		if(callback !== undefined && callback !== null){
+			var callbacks = callback;
 			callbacks(this.response);
 		}
 		else{

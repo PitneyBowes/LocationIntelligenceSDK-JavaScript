@@ -23,12 +23,12 @@ GEOAPIS_V1_INHERIT(GEOAPIS_V1.baseService, GEOAPIS_V1.geoLife);
 /**
  * Set API URL to get demographic by address
  * @param Object {address: free-form text} (required)
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoLife.prototype.getDemographicByAddress = function(params, callback){
-	var apiUrl = '/geolife/v1/demographics/byaddress?address='+encodeURIComponent(params.address);
-	var optionalList = ['filter', 'profile', 'country'];
+	var apiUrl = '/geolife/v1/demographics/byaddress?address='+encodeURIComponent(params.address),
+	optionalList = ['filter', 'profile', 'country'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
@@ -41,12 +41,12 @@ GEOAPIS_V1.geoLife.prototype.getDemographicByAddress = function(params, callback
 /**
  * Set API URL to get demographic by location
  * @param Object {latitude: float, longitude: float} (required)
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoLife.prototype.getDemographicByLocation = function(params, callback){
-	var apiUrl = '/geolife/v1/demographics/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude);
-	var optionalList = ['filter', 'profile'];
+	var apiUrl = '/geolife/v1/demographics/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude),
+	optionalList = ['filter', 'profile'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
@@ -59,12 +59,12 @@ GEOAPIS_V1.geoLife.prototype.getDemographicByLocation = function(params, callbac
 /**
  * Set API URL to get segmentation by address
  * @param Object {address: free-form text} (required)
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoLife.prototype.getSegmentationByAddress = function(params, callback){
-	var apiUrl = '/geolife/v1/segmentation/byaddress?address='+encodeURIComponent(params.address);
-	var optionalList = ['country'];
+	var apiUrl = '/geolife/v1/segmentation/byaddress?address='+encodeURIComponent(params.address),
+	optionalList = ['country'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
@@ -77,8 +77,8 @@ GEOAPIS_V1.geoLife.prototype.getSegmentationByAddress = function(params, callbac
 /**
  * Set API URL to get segmentation by location
  * @param Object {latitude: float, longitude: float} (required)
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoLife.prototype.getSegmentationByLocation = function(params, callback){
 	var apiUrl = '/geolife/v1/segmentation/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude);

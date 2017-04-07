@@ -23,13 +23,12 @@ GEOAPIS_V1_INHERIT(GEOAPIS_V1.baseService, GEOAPIS_V1.geoSearch);
 /**
  * Set API URL to get location
  * @param Object {searchText: string(required), latitude: float(required), longitude: float(required), maxCandidates: number(optional), searchRadius: number(optional), searchRadiusUnit: string(optional)}
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoSearch.prototype.getLocation = function(params, callback){
-	var apiUrl = '/geosearch/v1/locations?searchText='+encodeURIComponent(params.searchText);
-	
-	var optionalList = ['latitude','longitude','country','maxCandidates', 'searchRadius', 'searchRadiusUnit'];
+	var apiUrl = '/geosearch/v1/locations?searchText='+encodeURIComponent(params.searchText),
+	optionalList = ['latitude','longitude','country','maxCandidates', 'searchRadius', 'searchRadiusUnit'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);

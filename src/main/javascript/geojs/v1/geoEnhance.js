@@ -24,12 +24,12 @@ GEOAPIS_V1_INHERIT(GEOAPIS_V1.baseService, GEOAPIS_V1.geoEnhance);
 /**
  * Set API URL to get address
  * @param Object {latitude: float(required), longitude: float(required), searchRadius: number(optional), searchRadiusUnit: string(optional)}
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoEnhance.prototype.getAddress = function(params, callback){
-	var apiUrl = '/geoenhance/v1/address/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude);
-	var optionalList = ['searchRadius', 'searchRadiusUnit'];
+	var apiUrl = '/geoenhance/v1/address/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude),
+	optionalList = ['searchRadius', 'searchRadiusUnit'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
@@ -42,12 +42,12 @@ GEOAPIS_V1.geoEnhance.prototype.getAddress = function(params, callback){
 /**
  * Set API URL to get place
  * @param Object {latitude: float(required), longitude: float(required), levelHint: number(optional)}
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoEnhance.prototype.getPlace = function(params, callback){
-	var apiUrl =  '/geoenhance/v1/place/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude);
-	var optionalList = ['levelHint'];
+	var apiUrl = '/geoenhance/v1/place/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude),
+	optionalList = ['levelHint'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
@@ -60,12 +60,12 @@ GEOAPIS_V1.geoEnhance.prototype.getPlace = function(params, callback){
 /**
  * Set API URL to get POIs
  * @param Object {latitude: float(required), longitude: float(required), category: number(optional), searchRadius: number(optional), maxCandidates: number(optional), searchRadiusUnit: string(optional), searchPriority: string(optional), searchDataset: string(optional)}
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoEnhance.prototype.getPOI = function(params, callback){
-	var apiUrl =  '/geoenhance/v1/poi/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude);
-	var optionalList = ['category', 'searchRadius', 'maxCandidates', 'searchRadiusUnit', 'searchPriority', 'searchDataset'];
+	var apiUrl = '/geoenhance/v1/poi/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude),
+	optionalList = ['category', 'searchRadius', 'maxCandidates', 'searchRadiusUnit', 'searchPriority', 'searchDataset', 'brandName', 'travelTime', 'travelTimeUnit', 'travelDistance', 'travelDistanceUnit', 'mode'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
@@ -78,11 +78,11 @@ GEOAPIS_V1.geoEnhance.prototype.getPOI = function(params, callback){
 /**
  * Set API URL to get timezone
  * @param Object {latitude: float(required), longitude: float(required), timestamp: float(required)}
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoEnhance.prototype.getTimezone = function(params, callback){
-	var apiUrl =  '/geoenhance/v1/timezone/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude)+'&timestamp='+encodeURIComponent(params.timestamp);
+	var apiUrl = '/geoenhance/v1/timezone/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude)+'&timestamp='+encodeURIComponent(params.timestamp);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
 	}

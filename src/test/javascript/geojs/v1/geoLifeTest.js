@@ -2,7 +2,6 @@ describe("GeoLife Test Suite", function (){
 	var GLife;	 
 	beforeEach(function() {
 		GLife = new GEOAPIS_V1.geoLife('<Put your Token Here>');
-		GLife.apiAddress = 'https://api.pitneybowes.com/location-intelligence';
 	});
 	
 	it("GeoLife ByAddress Valid Parameters", function () {
@@ -113,5 +112,5 @@ describe("GeoLife Test Suite", function (){
         GLife.getSegmentationByLocation({latitude:35.0118, longitude:200}, function(data){
 			expect(data.httpResponse.status).toEqual(400);
 		});
-    });*/
+    });
 });

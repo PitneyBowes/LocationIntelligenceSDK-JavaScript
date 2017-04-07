@@ -23,12 +23,12 @@ GEOAPIS_V1_INHERIT(GEOAPIS_V1.baseService, GEOAPIS_V1.geoComm);
 /**
  * Set API URL to get RateCenter by address
  * @param Object {address: free-form text (required), level: basic/detail (optional), country: ISO code of the country (optional), areaCodeInfo: boolean (optional)}
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoComm.prototype.getRateCenterByAddress = function(params, callback){
-	var apiUrl = '/geocomm/v1/ratecenter/byaddress?address='+encodeURIComponent(params.address);
-	var optionalList = ['level', 'country', 'areaCodeInfo'];
+	var apiUrl = '/geocomm/v1/ratecenter/byaddress?address='+encodeURIComponent(params.address),
+	optionalList = ['level', 'country', 'areaCodeInfo'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
@@ -41,12 +41,12 @@ GEOAPIS_V1.geoComm.prototype.getRateCenterByAddress = function(params, callback)
 /**
  * Set API URL to get RateCenter by location
  * @param Object {latitude: float (required), longitude: float (required), level: basic/detail (optional), areaCodeInfo: boolean (optional)}
- * @param String callback method name (optional)
- * @return response object or calls callback
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
  */
 GEOAPIS_V1.geoComm.prototype.getRateCenterByLocation = function(params, callback){
-	var apiUrl = '/geocomm/v1/ratecenter/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude);
-	var optionalList = ['level', 'areaCodeInfo'];
+	var apiUrl = '/geocomm/v1/ratecenter/bylocation?latitude='+encodeURIComponent(params.latitude)+'&longitude='+encodeURIComponent(params.longitude),
+	optionalList = ['level', 'areaCodeInfo'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);

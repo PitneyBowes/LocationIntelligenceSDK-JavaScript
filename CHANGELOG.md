@@ -1,3 +1,9 @@
+## 3.0.0 - 2017-03-24
+- Changes for GeoEnhance
+- Added new API GeoRisk
+- Added new API GeoRoute
+- Added new API GeoZone
+
 ## 2.6.0 - 2016-12-19
 - Changes for Geosearch
 

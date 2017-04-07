@@ -198,13 +198,23 @@ ul.inheritsList
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoCode.html">GEOAPIS_V1.geoCode</a></li>
 	
+	<li><a href="../symbols/GEOAPIS_V1.geoComm.html">GEOAPIS_V1.geoComm</a></li>
+	
 	<li><a href="../symbols/GEOAPIS_V1.geoEnhance.html">GEOAPIS_V1.geoEnhance</a></li>
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoLife.html">GEOAPIS_V1.geoLife</a></li>
 	
+	<li><a href="../symbols/GEOAPIS_V1.geoMap.html">GEOAPIS_V1.geoMap</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoRisk.html">GEOAPIS_V1.geoRisk</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoRoute.html">GEOAPIS_V1.geoRoute</a></li>
+	
 	<li><a href="../symbols/GEOAPIS_V1.geoSearch.html">GEOAPIS_V1.geoSearch</a></li>
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoTax.html">GEOAPIS_V1.geoTax</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoZone.html">GEOAPIS_V1.geoZone</a></li>
 	
 </ul>
 <hr />
@@ -226,7 +236,7 @@ ul.inheritsList
 A baseService object
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/E__LBS_Branches_Release 2.0_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_baseService.js.html">baseService.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/E__lbs_trunk_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_baseService.js.html">baseService.js</a>.
 				
 			</p>
 
@@ -274,7 +284,7 @@ A baseService object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#apiGetUrl">apiGetUrl</a></b>(params, optionalList, apiUrl)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#apiGetUrl">apiGetUrl</a></b>(d, b, c)
 								</div>
 								<div class="description"></div>
 							</td>
@@ -283,7 +293,7 @@ A baseService object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#callApi">callApi</a></b>(string)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#callApi">callApi</a></b>(String)
 								</div>
 								<div class="description">Call API URL and set response property</div>
 							</td>
@@ -292,7 +302,7 @@ A baseService object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#callApiAsync">callApiAsync</a></b>(string, string)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#callApiAsync">callApiAsync</a></b>(String, callback)
 								</div>
 								<div class="description">Call API URL and set response property</div>
 							</td>
@@ -301,7 +311,7 @@ A baseService object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#callPostApi">callPostApi</a></b>(string, postData)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#callPostApi">callPostApi</a></b>(String, postData)
 								</div>
 								<div class="description">Call API URL and set response property</div>
 							</td>
@@ -310,7 +320,7 @@ A baseService object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#callPostApiAsync">callPostApiAsync</a></b>(string, string, callback)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#callPostApiAsync">callPostApiAsync</a></b>(String, Object, callback)
 								</div>
 								<div class="description">Call API URL and set response property</div>
 							</td>
@@ -319,7 +329,7 @@ A baseService object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#queryDelimiter">queryDelimiter</a></b>(requestUri)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.baseService.html#queryDelimiter">queryDelimiter</a></b>(b)
 								</div>
 								<div class="description"></div>
 							</td>
@@ -386,11 +396,14 @@ A baseService object
 					<div class="fixedFont">
 					
 					
-					<b>apiGetUrl</b>(params, optionalList, apiUrl)
+					<b>apiGetUrl</b>(d, b, c)
 					
 					</div>
 					<div class="description">
 						
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/E__lbs_trunk_ClientSDK_Javascript_SDK_src_main_javascript_LocationIntelligenceSDK-3.0.0-min.js.html">LocationIntelligenceSDK-3.0.0-min.js</a>.
 						
 						
 					</div>
@@ -403,19 +416,19 @@ A baseService object
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>params</b>
+									<b>d</b>
 									
 								</dt>
 								<dd></dd>
 							
 								<dt>
-									<b>optionalList</b>
+									<b>b</b>
 									
 								</dt>
 								<dd></dd>
 							
 								<dt>
-									<b>apiUrl</b>
+									<b>c</b>
 									
 								</dt>
 								<dd></dd>
@@ -435,7 +448,7 @@ A baseService object
 					<div class="fixedFont">
 					
 					
-					<b>callApi</b>(string)
+					<b>callApi</b>(String)
 					
 					</div>
 					<div class="description">
@@ -452,7 +465,7 @@ A baseService object
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>string</b>
+									<b>String</b>
 									
 								</dt>
 								<dd>relative apiUrl</dd>
@@ -472,7 +485,7 @@ A baseService object
 					<div class="fixedFont">
 					
 					
-					<b>callApiAsync</b>(string, string)
+					<b>callApiAsync</b>(String, callback)
 					
 					</div>
 					<div class="description">
@@ -489,16 +502,16 @@ A baseService object
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>string</b>
+									<b>String</b>
 									
 								</dt>
 								<dd>relative apiUrl</dd>
 							
 								<dt>
-									<b>string</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -515,7 +528,7 @@ A baseService object
 					<div class="fixedFont">
 					
 					
-					<b>callPostApi</b>(string, postData)
+					<b>callPostApi</b>(String, postData)
 					
 					</div>
 					<div class="description">
@@ -532,7 +545,7 @@ A baseService object
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>string</b>
+									<b>String</b>
 									
 								</dt>
 								<dd>relative apiUrl</dd>
@@ -558,7 +571,7 @@ A baseService object
 					<div class="fixedFont">
 					
 					
-					<b>callPostApiAsync</b>(string, string, callback)
+					<b>callPostApiAsync</b>(String, Object, callback)
 					
 					</div>
 					<div class="description">
@@ -575,16 +588,16 @@ A baseService object
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>string</b>
+									<b>String</b>
 									
 								</dt>
 								<dd>relative apiUrl</dd>
 							
 								<dt>
-									<b>string</b>
+									<b>Object</b>
 									
 								</dt>
-								<dd>callback method name</dd>
+								<dd>post data</dd>
 							
 								<dt>
 									<b>callback</b>
@@ -607,11 +620,14 @@ A baseService object
 					<div class="fixedFont">
 					
 					
-					<b>queryDelimiter</b>(requestUri)
+					<b>queryDelimiter</b>(b)
 					
 					</div>
 					<div class="description">
 						
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/E__lbs_trunk_ClientSDK_Javascript_SDK_src_main_javascript_LocationIntelligenceSDK-3.0.0-min.js.html">LocationIntelligenceSDK-3.0.0-min.js</a>.
 						
 						
 					</div>
@@ -624,7 +640,7 @@ A baseService object
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>requestUri</b>
+									<b>b</b>
 									
 								</dt>
 								<dd></dd>
@@ -648,7 +664,7 @@ A baseService object
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Mon Jun 27 2016 01:00:04 GMT+0530 (IST)
+			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Fri Apr 07 2017 15:38:35 GMT+0530 (IST)
 		</div>
 	</body>
 </html>

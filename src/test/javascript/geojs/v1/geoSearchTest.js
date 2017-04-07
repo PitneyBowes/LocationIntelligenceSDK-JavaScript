@@ -2,7 +2,6 @@ describe("GeoSearch Test Suite", function (){
 	var GeoSearch;	 
 	beforeEach(function() {
 		GeoSearch = new GEOAPIS_V1.geoSearch('<Put your Token Here>');
-		GeoSearch.apiAddress = 'https://api.pitneybowes.com/location-intelligence';
 	});
 	
 	it("GeoSearch Valid Parameters", function () {
@@ -37,6 +36,14 @@ describe("GeoSearch Test Suite", function (){
 	
 	it("GeoSearch InValid Search Unit", function () {
         var geo = GeoSearch.getLocation({searchText:'times sq', latitude:40.761819, longitude:-73.997533, maxCandidates:5, searchRadius:1, searchRadiusUnit:'Yards'});
+		expect(geo.httpResponse.status).toEqual(400);
+    });
+	it("GeoSearch InValid country", function () {
+        var geo = GeoSearch.getLocation({searchText:'times sq', latitude:40.761819, longitude:-73.997533, maxCandidates:5, searchRadius:1, searchRadiusUnit:'Yards',country:'abc'});
+		expect(geo.httpResponse.status).toEqual(400);
+    });
+	it("Either provide country or latitude/longitude", function () {
+        var geo = GeoSearch.getLocation({searchText:'times sq',  maxCandidates:5, searchRadius:1, searchRadiusUnit:'Yards'});
 		expect(geo.httpResponse.status).toEqual(400);
     });
 

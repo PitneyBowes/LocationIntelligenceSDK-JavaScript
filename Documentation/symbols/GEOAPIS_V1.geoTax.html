@@ -198,13 +198,23 @@ ul.inheritsList
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoCode.html">GEOAPIS_V1.geoCode</a></li>
 	
+	<li><a href="../symbols/GEOAPIS_V1.geoComm.html">GEOAPIS_V1.geoComm</a></li>
+	
 	<li><a href="../symbols/GEOAPIS_V1.geoEnhance.html">GEOAPIS_V1.geoEnhance</a></li>
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoLife.html">GEOAPIS_V1.geoLife</a></li>
 	
+	<li><a href="../symbols/GEOAPIS_V1.geoMap.html">GEOAPIS_V1.geoMap</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoRisk.html">GEOAPIS_V1.geoRisk</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoRoute.html">GEOAPIS_V1.geoRoute</a></li>
+	
 	<li><a href="../symbols/GEOAPIS_V1.geoSearch.html">GEOAPIS_V1.geoSearch</a></li>
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoTax.html">GEOAPIS_V1.geoTax</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoZone.html">GEOAPIS_V1.geoZone</a></li>
 	
 </ul>
 <hr />
@@ -226,7 +236,7 @@ ul.inheritsList
 A geoTax object
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/E__LBS_Branches_Release 2.0_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoTax.js.html">geoTax.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/E__lbs_trunk_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoTax.js.html">geoTax.js</a>.
 				
 			</p>
 
@@ -274,7 +284,43 @@ A geoTax object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getTaxByAddress">getTaxByAddress</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getAdvancedTaxByAddress">getAdvancedTaxByAddress</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to post tax by address</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getAdvancedTaxByLocation">getAdvancedTaxByLocation</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to post tax by location</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getAdvancedTaxRateByAddress">getAdvancedTaxRateByAddress</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to post tax rate by address</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getAdvancedTaxRateByLocation">getAdvancedTaxRateByLocation</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to post tax rate by location</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getTaxByAddress">getTaxByAddress</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get tax by address</div>
 							</td>
@@ -283,7 +329,7 @@ A geoTax object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getTaxByLocation">getTaxByLocation</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getTaxByLocation">getTaxByLocation</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get tax by location</div>
 							</td>
@@ -292,7 +338,7 @@ A geoTax object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getTaxRateByAddress">getTaxRateByAddress</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getTaxRateByAddress">getTaxRateByAddress</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get tax rate by address</div>
 							</td>
@@ -301,7 +347,7 @@ A geoTax object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getTaxRateByLocation">getTaxRateByLocation</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoTax.html#getTaxRateByLocation">getTaxRateByLocation</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get tax rate by location</div>
 							</td>
@@ -364,11 +410,211 @@ A geoTax object
 					Method Detail
 				</div>
 				
+					<a name="getAdvancedTaxByAddress"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getAdvancedTaxByAddress</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to post tax by address
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{taxType: Auto/General/Medical/Construction (required), preferences: The matching and geocoding options (optional), taxRateAddresses: The address or addresses with purchase amount (required)}</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getAdvancedTaxByLocation"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getAdvancedTaxByLocation</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to post tax by location
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{taxType: Auto/General/Medical/Construction (required), preferences: The matching and geocoding options (optional), locations: The input coordinates or multiple input coordinates with purchase amount (required)}</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getAdvancedTaxRateByAddress"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getAdvancedTaxRateByAddress</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to post tax rate by address
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{taxType: Auto/General/Medical/Construction (required), preferences: The matching and geocoding options (optional), taxRateAddresses: The address or addresses (required)}</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getAdvancedTaxRateByLocation"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getAdvancedTaxRateByLocation</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to post tax rate by location
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{taxType: Auto/General/Medical/Construction (required), preferences: The matching and geocoding options (optional), locations: The input coordinates or multiple input coordinates (required)}</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="getTaxByAddress"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>getTaxByAddress</b>(Object, String)
+					<b>getTaxByAddress</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -391,10 +637,10 @@ A geoTax object
 								<dd>{taxType: Auto/General/Medical/Construction (required), address: free-form text, purchaseAmount: float} (required)</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -405,7 +651,7 @@ A geoTax object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -418,7 +664,7 @@ A geoTax object
 					<div class="fixedFont">
 					
 					
-					<b>getTaxByLocation</b>(Object, String)
+					<b>getTaxByLocation</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -441,10 +687,10 @@ A geoTax object
 								<dd>{taxType: Auto/General/Medical/Construction (required), latitude: float, longitude: float, purchaseAmount: float} (required)</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -455,7 +701,7 @@ A geoTax object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -468,7 +714,7 @@ A geoTax object
 					<div class="fixedFont">
 					
 					
-					<b>getTaxRateByAddress</b>(Object, String)
+					<b>getTaxRateByAddress</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -491,10 +737,10 @@ A geoTax object
 								<dd>{taxType: Auto/General/Medical/Construction (required), address: free-form text} (required)</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -505,7 +751,7 @@ A geoTax object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -518,7 +764,7 @@ A geoTax object
 					<div class="fixedFont">
 					
 					
-					<b>getTaxRateByLocation</b>(Object, String)
+					<b>getTaxRateByLocation</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -541,10 +787,10 @@ A geoTax object
 								<dd>{taxType: Auto/General/Medical/Construction (required), latitude: float, longitude: float} (required)</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -555,7 +801,7 @@ A geoTax object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -572,7 +818,7 @@ A geoTax object
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Mon Jun 27 2016 01:00:04 GMT+0530 (IST)
+			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Fri Apr 07 2017 15:38:35 GMT+0530 (IST)
 		</div>
 	</body>
 </html>

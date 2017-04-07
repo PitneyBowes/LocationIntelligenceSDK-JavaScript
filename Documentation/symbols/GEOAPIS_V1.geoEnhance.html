@@ -198,13 +198,23 @@ ul.inheritsList
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoCode.html">GEOAPIS_V1.geoCode</a></li>
 	
+	<li><a href="../symbols/GEOAPIS_V1.geoComm.html">GEOAPIS_V1.geoComm</a></li>
+	
 	<li><a href="../symbols/GEOAPIS_V1.geoEnhance.html">GEOAPIS_V1.geoEnhance</a></li>
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoLife.html">GEOAPIS_V1.geoLife</a></li>
 	
+	<li><a href="../symbols/GEOAPIS_V1.geoMap.html">GEOAPIS_V1.geoMap</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoRisk.html">GEOAPIS_V1.geoRisk</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoRoute.html">GEOAPIS_V1.geoRoute</a></li>
+	
 	<li><a href="../symbols/GEOAPIS_V1.geoSearch.html">GEOAPIS_V1.geoSearch</a></li>
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoTax.html">GEOAPIS_V1.geoTax</a></li>
+	
+	<li><a href="../symbols/GEOAPIS_V1.geoZone.html">GEOAPIS_V1.geoZone</a></li>
 	
 </ul>
 <hr />
@@ -226,7 +236,7 @@ ul.inheritsList
 A geoEnhance object
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/E__LBS_Branches_Release 2.0_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoEnhance.js.html">geoEnhance.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/E__lbs_trunk_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoEnhance.js.html">geoEnhance.js</a>.
 				
 			</p>
 
@@ -274,7 +284,7 @@ A geoEnhance object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoEnhance.html#getAddress">getAddress</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoEnhance.html#getAddress">getAddress</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get address</div>
 							</td>
@@ -283,7 +293,7 @@ A geoEnhance object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoEnhance.html#getPlace">getPlace</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoEnhance.html#getPlace">getPlace</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get place</div>
 							</td>
@@ -292,7 +302,7 @@ A geoEnhance object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoEnhance.html#getPOI">getPOI</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoEnhance.html#getPOI">getPOI</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get POIs</div>
 							</td>
@@ -301,7 +311,7 @@ A geoEnhance object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoEnhance.html#getTimezone">getTimezone</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoEnhance.html#getTimezone">getTimezone</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get timezone</div>
 							</td>
@@ -368,7 +378,7 @@ A geoEnhance object
 					<div class="fixedFont">
 					
 					
-					<b>getAddress</b>(Object, String)
+					<b>getAddress</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -391,10 +401,10 @@ A geoEnhance object
 								<dd>{latitude: float(required), longitude: float(required), searchRadius: number(optional), searchRadiusUnit: string(optional)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -405,7 +415,7 @@ A geoEnhance object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -418,7 +428,7 @@ A geoEnhance object
 					<div class="fixedFont">
 					
 					
-					<b>getPlace</b>(Object, String)
+					<b>getPlace</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -441,10 +451,10 @@ A geoEnhance object
 								<dd>{latitude: float(required), longitude: float(required), levelHint: number(optional)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -455,7 +465,7 @@ A geoEnhance object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -468,7 +478,7 @@ A geoEnhance object
 					<div class="fixedFont">
 					
 					
-					<b>getPOI</b>(Object, String)
+					<b>getPOI</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -491,10 +501,10 @@ A geoEnhance object
 								<dd>{latitude: float(required), longitude: float(required), category: number(optional), searchRadius: number(optional), maxCandidates: number(optional), searchRadiusUnit: string(optional), searchPriority: string(optional), searchDataset: string(optional)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -505,7 +515,7 @@ A geoEnhance object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -518,7 +528,7 @@ A geoEnhance object
 					<div class="fixedFont">
 					
 					
-					<b>getTimezone</b>(Object, String)
+					<b>getTimezone</b>(Object, callback)
 					
 					</div>
 					<div class="description">
@@ -541,10 +551,10 @@ A geoEnhance object
 								<dd>{latitude: float(required), longitude: float(required), timestamp: float(required)}</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>callback method name (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -555,7 +565,7 @@ A geoEnhance object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>response object or calls callback</dd>
+								<dd>response object</dd>
 							
 							</dl>
 						
@@ -572,7 +582,7 @@ A geoEnhance object
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Mon Jun 27 2016 01:00:04 GMT+0530 (IST)
+			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Fri Apr 07 2017 15:38:35 GMT+0530 (IST)
 		</div>
 	</body>
 </html>
