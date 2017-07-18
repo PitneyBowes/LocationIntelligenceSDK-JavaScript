@@ -52,7 +52,7 @@ LocationIntelligenceSDK-JavaScript facilitates you to build Web applications usi
  We need to include following dependencies to start using LocationIntelligenceSDK-JavaScript 
  
  1. [jQuery 2.2.0](https://code.jquery.com/jquery-2.2.0.min.js) 
- 2. [leaflet 1.0.0] (http://leafletjs.com/download.html)
+ 2. [leaflet 1.0.0](http://leafletjs.com/download.html)
  3. [tangram 0.9.5 ](https://github.com/tangrams/tangram)
  
   We have to include three yaml files for GeoMap vector tiles themes. The yaml files are steel.yaml,bronze.yaml and iron.yaml and are under lib folder on Git. 
