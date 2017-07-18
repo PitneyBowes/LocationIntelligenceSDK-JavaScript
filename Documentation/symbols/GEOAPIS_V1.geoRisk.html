@@ -206,6 +206,8 @@ ul.inheritsList
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoMap.html">GEOAPIS_V1.geoMap</a></li>
 	
+	<li><a href="../symbols/GEOAPIS_V1.geoProperty.html">GEOAPIS_V1.geoProperty</a></li>
+	
 	<li><a href="../symbols/GEOAPIS_V1.geoRisk.html">GEOAPIS_V1.geoRisk</a></li>
 	
 	<li><a href="../symbols/GEOAPIS_V1.geoRoute.html">GEOAPIS_V1.geoRoute</a></li>
@@ -236,7 +238,7 @@ ul.inheritsList
 A geoRiskobject
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/E__lbs_trunk_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoRisk.js.html">geoRisk.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/E__LBS_trunk_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoRisk.js.html">geoRisk.js</a>.
 				
 			</p>
 
@@ -284,6 +286,42 @@ A geoRiskobject
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getAdvancedFireRiskByAddress">getAdvancedFireRiskByAddress</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to post fire risk by address</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getAdvancedFireRiskByLocation">getAdvancedFireRiskByLocation</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to post fire risk by location</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getAdvancedFloodRiskByAddress">getAdvancedFloodRiskByAddress</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to post flood risk by address</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getAdvancedFloodRiskByLocation">getAdvancedFloodRiskByLocation</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to post flood risk by location</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getCrimeRiskByAddress">getCrimeRiskByAddress</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get crime risk by address</div>
@@ -302,6 +340,33 @@ A geoRiskobject
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getDistanceToCoastByAddress">getDistanceToCoastByAddress</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to get distance to coast by address</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getDistanceToCoastByLocation">getDistanceToCoastByLocation</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to get distance to coast by location</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getEarthquakeHistory">getEarthquakeHistory</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to get earthquake history</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getEarthquakeRiskByAddress">getEarthquakeRiskByAddress</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get earthquake risk by address</div>
@@ -314,6 +379,15 @@ A geoRiskobject
 								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getEarthquakeRiskByLocation">getEarthquakeRiskByLocation</a></b>(Object, callback)
 								</div>
 								<div class="description">Set API URL to get earthquake risk by location</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoRisk.html#getFireHistory">getFireHistory</a></b>(Object, callback)
+								</div>
+								<div class="description">Set API URL to get fire history</div>
 							</td>
 						</tr>
 					
@@ -428,6 +502,206 @@ A geoRiskobject
 					Method Detail
 				</div>
 				
+					<a name="getAdvancedFireRiskByAddress"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getAdvancedFireRiskByAddress</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to post fire risk by address
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{addresses: The address or addresses (required)}</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getAdvancedFireRiskByLocation"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getAdvancedFireRiskByLocation</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to post fire risk by location
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{locations: The location or locations (required)}</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getAdvancedFloodRiskByAddress"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getAdvancedFloodRiskByAddress</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to post flood risk by address
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{preferences: Zone and geometry options (optional), addresses: The address or addresses (required)}</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getAdvancedFloodRiskByLocation"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getAdvancedFloodRiskByLocation</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to post flood risk by location
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{preferences: Zone and geometry options (optional), locations: The location or locations (required)}</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="getCrimeRiskByAddress"> </a>
 					<div class="fixedFont">
 					
@@ -452,7 +726,7 @@ A geoRiskobject
 									<b>Object</b>
 									
 								</dt>
-								<dd>{address: free-form text} (required), type: string(optional)</dd>
+								<dd>{address: free-form text} (required), type: string(optional), includeGeometry: string(optional)</dd>
 							
 								<dt>
 									<b>callback</b>
@@ -502,7 +776,157 @@ A geoRiskobject
 									<b>Object</b>
 									
 								</dt>
-								<dd>{longitude} (required), {latitude} (required), type: string(optional)</dd>
+								<dd>{longitude} (required), {latitude} (required), type: string(optional), includeGeometry: string(optional)</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getDistanceToCoastByAddress"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getDistanceToCoastByAddress</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to get distance to coast by address
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{address} (required), maxCandidates: number(optional), waterBodyType: string(optional), searchDistance: float(optional), searchDistanceUnit: string(optional)</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getDistanceToCoastByLocation"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getDistanceToCoastByLocation</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to get distance to coast by location
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{longitude} (required), {latitude} (required), maxCandidates: number(optional), waterBodyType: string(optional), searchDistance: float(optional), searchDistanceUnit: string(optional)</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getEarthquakeHistory"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getEarthquakeHistory</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to get earthquake history
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{postCode} (required), startDate: float(optional), endDate: float(optional), minMagnitude: float(optional), maxMagnitude: float(optional), maxCandidates: float(optional)</dd>
 							
 								<dt>
 									<b>callback</b>
@@ -552,7 +976,7 @@ A geoRiskobject
 									<b>Object</b>
 									
 								</dt>
-								<dd>{address} (required), richterValue: string(optional)</dd>
+								<dd>{address} (required), richterValue: string(optional), includeGeometry: string(optional)</dd>
 							
 								<dt>
 									<b>callback</b>
@@ -602,7 +1026,57 @@ A geoRiskobject
 									<b>Object</b>
 									
 								</dt>
-								<dd>{longitude} (required), {latitude} (required), richterValue: string(optional)</dd>
+								<dd>{longitude} (required), {latitude} (required), richterValue: string(optional), includeGeometry: string(optional)</dd>
+							
+								<dt>
+									<b>callback</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd>response object</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="getFireHistory"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>getFireHistory</b>(Object, callback)
+					
+					</div>
+					<div class="description">
+						Set API URL to get fire history
+						
+						
+					</div>
+					
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>Object</b>
+									
+								</dt>
+								<dd>{postCode} (required), startDate: float(optional), endDate: float(optional), maxCandidates: float(optional)</dd>
 							
 								<dt>
 									<b>callback</b>
@@ -852,7 +1326,7 @@ A geoRiskobject
 									<b>Object</b>
 									
 								</dt>
-								<dd>{address} (required), includeZoneDesc</dd>
+								<dd>{address} (required), includeZoneDesc: string(optional), includeGeometry: string(optional)</dd>
 							
 								<dt>
 									<b>callback</b>
@@ -902,7 +1376,7 @@ A geoRiskobject
 									<b>Object</b>
 									
 								</dt>
-								<dd>{longitude} (required), {latitude} (required), includeZoneDesc</dd>
+								<dd>{longitude} (required), {latitude} (required), includeZoneDesc: string(optional), includeGeometry: string(optional)</dd>
 							
 								<dt>
 									<b>callback</b>
@@ -936,7 +1410,7 @@ A geoRiskobject
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Fri Apr 07 2017 15:38:35 GMT+0530 (IST)
+			Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.0.0 on Fri Jul 07 2017 20:52:16 GMT+0530 (IST)
 		</div>
 	</body>
 </html>
