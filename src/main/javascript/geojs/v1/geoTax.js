@@ -91,7 +91,7 @@ GEOAPIS_V1.geoTax.prototype.getTaxByLocation = function(params, callback){
  * @return response object
  */
 GEOAPIS_V1.geoTax.prototype.getAdvancedTaxRateByAddress = function(params, callback){
-	var apiUrl = '/geotax/v1/taxrate/'+encodeURIComponent(params.taxType)+'/byaddress',
+	var apiUrl = '/geotax/v1/taxrate/'+encodeURIComponent(params.taxType)+'/byaddress';
 	postData = '{"preferences":'+params.preferences+', "taxRateAddresses":'+params.taxRateAddresses+'}';
 	if(callback !== undefined){
 		this.callPostApiAsync(apiUrl, postData, callback);

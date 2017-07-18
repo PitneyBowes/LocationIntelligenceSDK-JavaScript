@@ -82,7 +82,7 @@ GEOAPIS_V1.geoCode.prototype.getGeocode = function(params, callback){
  * @return response object
  */
 GEOAPIS_V1.geoCode.prototype.getReverseGeocode = function(params, callback){
-	var apiUrl = '/geocode-service/v1/transient/' +encodeURIComponent(params.bundleType)+ '/reverseGeocode?x='+encodeURIComponent(params.x)+'&y'+encodeURIComponent(params.y),
+	var apiUrl = '/geocode-service/v1/transient/' +encodeURIComponent(params.bundleType)+ '/reverseGeocode?x='+encodeURIComponent(params.x)+'&y='+encodeURIComponent(params.y),
 	optionalList = ['country', 'coordSysName', 'distance', 'distanceUnits'];
 	apiUrl = this.apiGetUrl(params, optionalList, apiUrl);
 	if(callback !== undefined){
@@ -119,6 +119,38 @@ GEOAPIS_V1.geoCode.prototype.getGeocodeAdvanced = function(params, callback){
 GEOAPIS_V1.geoCode.prototype.getReverseGeocodeAdvance = function(params, callback){
 	var apiUrl = '/geocode-service/v1/transient/' +encodeURIComponent(params.bundleType)+ '/reverseGeocode',
 	postData = '{"preferences":'+params.preferences+', "points":'+params.points+'}';
+	if(callback !== undefined){
+		this.callPostApiAsync(apiUrl, postData, callback);
+	}
+	else{
+		this.callPostApi(apiUrl, postData);
+		return this.response;
+	}
+};/**
+ * Set API URL to get PB key by address
+ * @param Object {address: free-form text} (required), type: string(optional), includeGeometry: string(optional)
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
+ */
+GEOAPIS_V1.geoCode.prototype.getPbKeyByAddress = function(params, callback){
+	var apiUrl = '/geocode-service/v1/key/byaddress?address='+encodeURIComponent(params.address);
+	if(callback !== undefined){
+		this.callApiAsync(apiUrl, callback);
+	}
+	else{
+		this.callApi(apiUrl);
+		return this.response;
+	}
+};
+/**
+ * Set API URL to post PB key by address
+ * @param Object {addresses: The address or addresses (required)}
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
+ */
+GEOAPIS_V1.geoCode.prototype.getPbKeyByAddressAdvance = function(params, callback){
+	var apiUrl = '/geocode-service/v1/key/byaddress';
+	postData = '{"addresses":'+params.addresses+'}';
 	if(callback !== undefined){
 		this.callPostApiAsync(apiUrl, postData, callback);
 	}
