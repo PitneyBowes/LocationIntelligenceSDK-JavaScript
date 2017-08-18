@@ -1,7 +1,8 @@
 describe("geoComm Test Suite: getRateCenterByAddress", function(){
 	var GCOMM;	
 	beforeEach(function() {
-		GCOMM = new GEOAPIS_V1.geoComm('<Put your Token Here>');
+		GCOMM = new GEOAPIS_V1.geoComm('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GCOMM.apiAddress = 'http://54.86.242.73/geoapis/services';
 	});
     it("geoComm ByAddress Valid Parameters", function () {
         var geo = GCOMM.getRateCenterByAddress({address:'4750 Walnut St, Boulder, CO', level: 'detail', country: 'USA', areaCodeInfo: true});
@@ -22,7 +23,8 @@ describe("geoComm Test Suite: getRateCenterByAddress", function(){
 describe("geoComm Test Suite: getRateCenterByLocation", function(){
 	var GCOMM;	
 	beforeEach(function() {
-		GCOMM = new GEOAPIS_V1.geoComm('<Put your Token Here>');
+		GCOMM = new GEOAPIS_V1.geoComm('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GCOMM.apiAddress = 'http://54.86.242.73/geoapis/services';
 	});
     it("geoComm ByLocation Valid Parameters", function () {
         var geo = GCOMM.getRateCenterByLocation({latitude:42.5309, longitude:-73.6572, level: 'detail', areaCodeInfo: true});

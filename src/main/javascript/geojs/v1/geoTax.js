@@ -85,6 +85,22 @@ GEOAPIS_V1.geoTax.prototype.getTaxByLocation = function(params, callback){
 	}
 };
 /**
+ * Set API URL to get IPD tax rate by address
+ * @param Object {address: free-form text} (required)
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
+ */
+GEOAPIS_V1.geoTax.prototype.getIpdTaxRateByAddress = function(params, callback){
+	var apiUrl = '/geotax/v1/taxdistrict/ipd/byaddress?address='+encodeURIComponent(params.address);
+	if(callback !== undefined){
+		this.callApiAsync(apiUrl, callback);
+	}
+	else{
+		this.callApi(apiUrl);
+		return this.response;
+	}
+};
+/**
  * Set API URL to post tax rate by address
  * @param Object {taxType: Auto/General/Medical/Construction (required), preferences: The matching and geocoding options (optional), taxRateAddresses: The address or addresses (required)}
  * @callback {callback: User defined callback} (optional) or
@@ -144,6 +160,23 @@ GEOAPIS_V1.geoTax.prototype.getAdvancedTaxByAddress = function(params, callback)
 GEOAPIS_V1.geoTax.prototype.getAdvancedTaxByLocation = function(params, callback){
 	var apiUrl = '/geotax/v1/tax/'+encodeURIComponent(params.taxType)+'/bylocation',
 	postData = '{"preferences":'+params.preferences+', "locations":'+params.locations+'}';
+	if(callback !== undefined){
+		this.callPostApiAsync(apiUrl, postData, callback);
+	}
+	else{
+		this.callPostApi(apiUrl, postData);
+		return this.response;
+	}
+};
+/**
+ * Set API URL to post IPD tax rate by address
+ * @param Object {preferences: The matching and geocoding options (optional), addresses: The address or addresses (required)}
+ * @callback {callback: User defined callback} (optional) or
+ * @return response object
+ */
+GEOAPIS_V1.geoTax.prototype.getAdvancedIpdTaxRateByAddress = function(params, callback){
+	var apiUrl = '/geotax/v1/taxdistrict/ipd/byaddress';
+	postData = '{"preferences":'+params.preferences+', "addresses":'+params.addresses+'}';
 	if(callback !== undefined){
 		this.callPostApiAsync(apiUrl, postData, callback);
 	}

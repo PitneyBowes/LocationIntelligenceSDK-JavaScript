@@ -1,7 +1,8 @@
 describe("GeoSearch Test Suite", function (){	
 	var GeoSearch;	 
 	beforeEach(function() {
-		GeoSearch = new GEOAPIS_V1.geoSearch('<Put your Token Here>');
+		GeoSearch = new GEOAPIS_V1.geoSearch('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GeoSearch.apiAddress = 'http://52.5.109.175/geosearch/services';
 	});
 	
 	it("GeoSearch Valid Parameters", function () {
@@ -47,7 +48,7 @@ describe("GeoSearch Test Suite", function (){
 		expect(geo.httpResponse.status).toEqual(400);
     });
 
-	it("GeoSearch Async Valid Parameters", function () {
+	/*it("GeoSearch Async Valid Parameters", function () {
         GeoSearch.getLocation({searchText:'times sq', latitude:40.761819, longitude:-73.997533, maxCandidates:5, searchRadius:1, searchRadiusUnit:'MILES'}, function(data){
 			expect(data.httpResponse.status).toEqual(200);
 		});
@@ -87,5 +88,5 @@ describe("GeoSearch Test Suite", function (){
         GeoSearch.getLocation({searchText:'times sq', latitude:40.761819, longitude:-73.997533, maxCandidates:5, searchRadius:1, searchRadiusUnit:'Yards'}, function(data){
 			expect(data.httpResponse.status).toEqual(400);
 		});
-    });
+    });*/
 });

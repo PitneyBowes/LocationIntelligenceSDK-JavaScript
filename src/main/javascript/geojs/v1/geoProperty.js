@@ -22,12 +22,12 @@ See the License for the specific language governing permissions and limitations 
 GEOAPIS_V1_INHERIT(GEOAPIS_V1.baseService, GEOAPIS_V1.geoProperty);
 /**
  * Set API URL to get Geo Property by Address
- * @param Object {address: string(required)}
+ * @param Object {category: string(required), address: string(required)}
  * @callback {callback: User defined callback} (optional) or
  * @return response object
  */
 GEOAPIS_V1.geoProperty.prototype.getGeoPropertyByAddress = function(params, callback){
-	var apiUrl =  '/geoproperty/v1/all/attributes/byaddress?address='+encodeURIComponent(params.address);
+	var apiUrl =  '/geoproperty/v1/'+encodeURIComponent(params.category)+'/attributes/byaddress?address='+encodeURIComponent(params.address);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
 	}
@@ -38,12 +38,12 @@ GEOAPIS_V1.geoProperty.prototype.getGeoPropertyByAddress = function(params, call
 };
 /**
  * Set API URL to post geoProperty by Address Batch
- * @param Object {addresses: The address or addresses to get GeoProperty (required)}
+ * @param Object {category: string(required),addresses: The address or addresses to get GeoProperty (required)}
  * @callback {callback: User defined callback} (optional) or
  * @return response object
  */
 GEOAPIS_V1.geoProperty.prototype.getGeoPropertyByAddressBatch = function(params, callback){
-	var apiUrl =  '/geoproperty/v1/all/attributes/byaddress';
+	var apiUrl =  '/geoproperty/v1/'+encodeURIComponent(params.category)+'/attributes/byaddress';
 	postData = '{"addresses":'+params.addresses+'}';
 	if(callback !== undefined){
 		this.callPostApiAsync(apiUrl, postData, callback);
@@ -56,12 +56,12 @@ GEOAPIS_V1.geoProperty.prototype.getGeoPropertyByAddressBatch = function(params,
 
 /**
  * Set API URL to get Geo Property by PBKey
- * @param Object {pbKey:string(required)}
+ * @param Object {category: string(required),pbKey:string(required)}
  * @callback {callback: User defined callback} (optional) or
  * @return response object
  */
 GEOAPIS_V1.geoProperty.prototype.getGeoPropertyByPBKey = function(params, callback){
-	var apiUrl =  '/geoproperty/v1/all/attributes/bypbkey?pbKey='+encodeURIComponent(params.pbKey);
+	var apiUrl =  '/geoproperty/v1/'+encodeURIComponent(params.category)+'/attributes/bypbkey?pbKey='+encodeURIComponent(params.pbKey);
 	if(callback !== undefined){
 		this.callApiAsync(apiUrl, callback);
 	}
@@ -74,12 +74,12 @@ GEOAPIS_V1.geoProperty.prototype.getGeoPropertyByPBKey = function(params, callba
 
 /**
  * Set API URL to post geoProperty by PBKey Batch
- * @param Object {pbkeys: The pbkeys to get GeoProperty (required)}
+ * @param Object {category: string(required),pbkeys: The pbkeys to get GeoProperty (required)}
  * @callback {callback: User defined callback} (optional) or
  * @return response object
  */
 GEOAPIS_V1.geoProperty.prototype.getGeoPropertyByPBKeyBatch = function(params, callback){
-	var apiUrl =  '/geoproperty/v1/all/attributes/bypbkey';
+	var apiUrl =  '/geoproperty/v1/'+encodeURIComponent(params.category)+'/attributes/bypbkey';
 	postData = '{"pbkeys":'+params.pbkeys+'}';
 	if(callback !== undefined){
 		this.callPostApiAsync(apiUrl, postData, callback);

@@ -1,0 +1,1495 @@
+styles:
+
+    dashed-lines:
+        base: lines
+        dash: [2, 2]
+
+    dashed-lines-states:
+        base: lines
+        dash: [3, 2]
+    
+    rail-dashed-lines:
+        base: lines
+        dash: [ 0.5, 4 ]
+
+    ferry-dash:
+        base: lines
+        dash: [ 2, 2 ]
+
+    fonts:
+        Open Sans: external
+        url: <link href='css.css' rel='stylesheet' type='text/css'>
+
+sources:
+    mapzen:
+        type: GeoJSON
+        url: https://api.pitneybowes.com/location-intelligence/geomap/v1/tile/osm/{z}/{x}/{y}.geojson?api_key={api_key}
+#------------------------------------------------
+layers:
+
+    water:
+        data: { source: mapzen, $zoom: { max: 10 } }
+        draw:
+            polygons:
+                order: 2
+                color: rgb(178, 203, 209)
+
+    water:
+        data: { source: mapzen, $zoom: { min: 10 } }
+        draw:
+            polygons:
+                order: 3
+                color: rgb(178, 203, 209)
+
+    ocean-labels:
+        data: { source: mapzen, layer: water }
+        filter: { kind: ocean }
+        draw:
+            text:
+                text_source: function() { return feature["name:short"] || feature["name"]; }
+                collide: true
+                font:
+                    family: Open Sans
+                    fill: rgb(50, 85, 100)
+                    size: 15px
+                    style: italic
+                    #transform: uppercase
+
+    rivers:
+        data: { source: mapzen, layer: water }
+        filter: { kind: river }
+        draw:
+            lines:
+                order: 2
+                color: rgb(178, 203, 209)
+                width: [ [9, 1px], [11, 2px], [16, 4px] ]
+
+    streams:
+        data: { source: mapzen, layer: water }
+        filter: { kind: stream, $zoom: { min: 15 } }
+        draw:
+            lines:
+                order: 2
+                color: rgb(178, 203, 209)
+                width: 2px
+
+    earth:
+        data: { source: mapzen }
+        draw:
+            polygons:
+                order: 0
+                color: [ [0, 'rgb(247, 247, 249)'], [8, 'rgb(247, 247, 249)'] ]
+            lines:
+                width: 2px
+                color: [ [0, 'rgb(247, 247, 249)'], [8, 'rgb(247, 247, 249)'] ]
+
+    landuse:
+        data: { source: mapzen }
+        filter: { kind: park, kind: national_park  }
+        draw:
+            polygons:
+                order: 1
+                color: rgb(217,220,221)
+
+                # add labels
+
+    parks:
+        data: { source: mapzen, layer: landuse }
+        filter: { kind: park }
+
+        parks-size:
+            filter:
+                any:
+                - { $zoom: [12],   area: { min: 3000000 } }
+                - { $zoom: [13],   area: { min: 5000 } }
+                - { $zoom: [14],   area: { min: 5000 } }
+                - { $zoom: [15],   area: { min: 2000 } }
+                - { $zoom: [16],   area: { min: 0 } }
+                - { $zoom: [17],   area: { min: 0 } }
+                - { $zoom: [18],   area: { min: 0 } }
+                - { $zoom: [19],   area: { min: 0 } }
+                - { $zoom: [20],   area: { min: 0 } }
+                - { $zoom: [21],   area: { min: 0 } }
+                - { $zoom: [22],   area: { min: 0 } }
+                - { $zoom: [23],   area: { min: 0 } }
+                - { $zoom: [24],   area: { min: 0 } }
+            draw:
+                polygons:
+                    order: 1
+                    color: rgb(217,220,221)
+
+    boundaries:
+        data: { source: mapzen, layer: boundaries }
+        countries:
+            filter: { kind: country }
+            draw:
+                lines:
+                    order: 1
+                    color: rgb(216, 216, 216)
+                    width: [ [5, 1px], [7, 2px], [10, 3px] ]
+
+    boundaries-disputed:
+        data: { source: mapzen, layer: boundaries }
+        countries:
+            filter: { kind: disputed }
+            draw:
+                dashed-lines:
+                    order: 1
+                    color: rgb(216, 216, 216)
+                    width: [ [5, 1px], [7, 2px], [10, 3px] ]
+
+        states:
+            filter: { kind: state, scalerank: [1, 2, 3, 4], $zoom: { max: 9 } }
+            draw:
+                lines:
+                    order: 1
+                    color: rgb(216, 216, 216)
+                    width: [ [5, 1px], [6, 1.5px], [9, 2px] ]
+
+        US-states:
+            filter: { kind: state, scalerank: false, $zoom: { max: 9 } }
+            draw:
+                lines:
+                    order: 1
+                    color: rgb(216, 216, 216)
+                    width: [ [5, 1px], [6, 1.5px], [9, 2px] ]
+
+        states-low:
+            filter: { kind: state, scalerank: [5, 6, 7, 8, 9, 10], $zoom: { min: 8, max: 9 } }
+            draw:
+                lines:
+                    order: 1
+                    color: rgb(216, 216, 216)
+                    width: [ [5, 1px], [6, 1.5px], [9, 2px] ]
+
+
+        states-dash:
+            filter: { kind: state, scalerank: [1, 2, 3, 4], $zoom: { min: 9 } }
+            draw:
+                dashed-lines-states:
+                    order: 1
+                    color: rgb(216, 216, 216)
+                    width: [ [9, 2px], [14, 3px] ]
+
+        US-states-dash:
+            filter: { kind: state, scalerank: false, $zoom: { min: 9 } }
+            draw:
+                dashed-lines-states:
+                    order: 1
+                    color: rgb(216, 216, 216)
+                    width: [ [9, 2px], [14, 3px] ]
+
+        states-low-dash:
+            filter: { kind: state, scalerank: [5, 6, 7, 8, 9, 10], $zoom: { min: 9 } }
+            draw:
+                dashed-lines-states:
+                    order: 1
+                    color: rgb(216, 216, 216)
+                    width: [ [9, 2px], [14, 3px] ]
+
+ #------------------------------------------------
+
+    country-labels:
+        data: { source: mapzen , layer: places }
+        filter: { kind: country }
+
+        30M+:
+            filter: { population: { min: 30000000 }, $zoom: { min: 3, max: 8} }
+            draw:
+                text:
+                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    font:
+                        size: [ [3, 8pt], [4, 10pt], [5, 16pt], [6, 20pt] ]
+                        family: Open Sans
+                        fill: rgb(80, 80, 80)
+                        weight: bold
+                        transform: uppercase
+
+        10Mto30M:
+            filter: { population: { min: 10000000, max: 30000000 }, $zoom: { min: 4, max: 8} }
+            draw:
+                text:
+                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    font:
+                        size: [ [4, 10pt], [5, 12pt], [6, 16pt] ]
+                        family: Open Sans
+                        fill: rgb(80, 80, 80)
+                        weight: bold
+                        transform: uppercase
+                        
+        Below10M:
+            filter: { population: { max: 10000000, min: 5000000 }, $zoom: { min: 5, max: 8} }
+            draw:
+                text:
+                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    font:
+                        size: [ [5, 10pt], [6, 12pt], [7, 16pt] ]
+                        family: Open Sans
+                        fill: rgb(80, 80, 80)
+                        weight: bold
+                        transform: uppercase
+
+        Below5M:
+            filter: { population: { max: 5000000 }, $zoom: { min: 6, max: 9} }
+            draw:
+                text:
+                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    font:
+                        size: [ [6, 10pt], [7, 12pt], [8, 16pt] ]
+                        family: Open Sans
+                        fill: rgb(80, 80, 80)
+                        weight: bold
+                        transform: uppercase
+
+
+    state-labels:
+        data: { source: mapzen , layer: places }
+        filter: { kind: state, name: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Georgia", "Idaho", "Illinois", "Indiana", "Iowa","Kansas", "Kentucky", "Louisiana", "Maine", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Washington","West Virginia", "Wisconsin", "Wyoming" ],  $zoom: { min: 4, max: 6 } }
+        draw:
+            text:
+                text_source: function() { return feature["name:short"] || feature["name"]; }
+                collide: true
+                font:
+                    family: Open Sans
+                    fill: rgb(130, 130, 130)
+                    size: [ [4,10px], [5, 12px], [6, 14px], [7, 16px] ]
+                    weight: bold
+                    transform: uppercase
+
+    state-labels-2:
+        data: { source: mapzen , layer: places }
+        filter: { kind: state, name: ["Acre", "Alagoas", "Amazonas","Amapá", "Bahia", "Ceará","Distrito Federal", "Espírito Santo","Goiás","Maranhão","Minas Gerais","Mato Grosso do Sul","Mato Grosso","Pará","Paraíba","Pernambuco","Piauí","Paraná","Rio de Janeiro","Rio Grande do Norte","Rondônia","Roraima","Rio Grande do Sul","Santa Catarina","Sergipe","São Paulo","Tocantins", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Georgia", "Idaho", "Illinois", "Indiana", "Iowa","Kansas", "Kentucky", "Louisiana", "Maine", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Washington","West Virginia", "Wisconsin", "Wyoming", "Vermont", "New Hampshire", "Massachussetts", "Alberta", "British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Nova Scotia","Ontario","Prince Edward Island","Québec","Saskatchewan","Northwest Territories","Nunavut","Yukon", "New South Wales", "Queensland", "South Australia","Tasmania","Victoria","Western Australia","Australian Capital Territory","Northern Territory" ],  $zoom: { min: 6, max: 7 } }
+        draw:
+            text:
+                text_source: function() { return feature["name:abbreviation"] || feature["name"]; }
+                collide: true
+                font:
+                    family: Open Sans
+                    fill: rgb(130, 130, 130)
+                    size: [ [4,10px], [5, 12px], [6, 14px], [7, 16px] ]
+                    weight: bold
+                    transform: uppercase
+
+    state-labels-3:
+        data: { source: mapzen , layer: places }
+        filter: { kind: state, name: ["Connecticut", "Rhode Island", "Massachusetts"],  $zoom: { min: 7, max: 9 } }
+        draw:
+            text:
+                text_source: function() { return feature["name:short"] || feature["name"]; }
+                collide: true
+                font:
+                    family: Open Sans
+                    fill: rgb(130, 130, 130)
+                    size: [ [4,10px], [5, 12px], [6, 14px], [7, 16px] ]
+                    weight: bold
+                    transform: uppercase
+
+    state-names:
+        data: { source: mapzen , layer: places }
+        filter: { kind: state, $zoom: { min: 7, max: 9 }, name: [ "Acre", "Alagoas", "Amazonas","Amapá", "Bahia", "Ceará","Distrito Federal", "Espírito Santo","Goiás","Maranhão","Minas Gerais","Mato Grosso do Sul","Mato Grosso","Pará","Paraíba","Pernambuco","Piauí","Paraná","Rio de Janeiro","Rio Grande do Norte","Rondônia","Roraima","Rio Grande do Sul","Santa Catarina","Sergipe","São Paulo","Tocantins", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Georgia", "Idaho", "Illinois", "Indiana", "Iowa","Kansas", "Kentucky", "Louisiana", "Maine", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Washington","West Virginia", "Wisconsin", "Wyoming", "Vermont", "New Hampshire", "Massachussetts", "Aguascalientes","Baja California","Baja California Sur","Chihuahua","Colima","Campeche","Coahuila","Chiapas","Federal District","Durango","Guerrero","Guanajuato","Hidalgo","Jalisco","México State","Michoacán","Morelos","Nayarit","Nuevo León","Oaxaca","Puebla","Querétaro","Quintana Roo", "Sinaloa","San Luis Potosí","Sonora","Tabasco","Tlaxcala","Tamaulipas","Veracruz","Yucatán","Zacatecas", "Alberta", "British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Nova Scotia","Ontario","Prince Edward Island","Québec","Saskatchewan","Northwest Territories","Nunavut","Yukon", "Andhra Pradesh", "Arunachal Pradesh","Assam","Bihar","Chhattisgarh", "Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim", "Tamil Nadu","Telangana","Tripura","Uttarakhand","Uttar Pradesh", "West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli","Daman and Diu","Delhi","Lakshadweep","Puducherry", "New South Wales", "Queensland", "South Australia","Tasmania","Victoria","Western Australia","Australian Capital Territory","Northern Territory" ] }
+        draw:
+            text:
+                text_source: function() { return feature["name:name"] || feature["name"]; }
+                collide: true
+                font:
+                    family: Open Sans
+                    fill: rgb(130, 130, 130)
+                    size: [ [4,10px], [5, 12px], [6, 14px], [7, 16px], [8, 18px] ]
+                    weight: bold
+                    transform: uppercase
+
+    state-names-china:
+        data: { source: mapzen , layer: places }
+        filter: { kind: state, $zoom: { min: 7, max: 9 }, name:en: [ "Beijing Municipality", "Tianjin Municipality", "Hebei Province", "Shanxi Province", "Inner Mongolia Autonomous Region", "Liaoning Province", "Jilin Province", "Heilongjiang Province", "Shanghai Municipality", "Jiangsu Province", "Zhejiang Province", "Anhui Province","Fujian Province", "Jiangxi Province", "Shandong Province", "Henan Province", "Hubei Province", "Hunan Province", "Guangdong Province", "Guangxi Zhuang Autonomous Region", "Hainan Province", "Chongqing Municipality", "Sichuan Province", "Guizhou Province", "Yunnan Province", "Tibet Autonomous Region", "Shaanxi Province", "Gansu Province", "Qinghai Province", "Ningxia Hui Autonomous Region", "Xinjiang Uyghur Autonomous Region", "Hong Kong Special Administrative Region", "Macau Special Administrative Region" ] }
+        draw:
+            text:
+                text_source: function() { return feature["name:en"] || feature["name"]; }
+                collide: true
+                font:
+                    family: Open Sans
+                    fill: rgb(130, 130, 130)
+                    size: [ [4,10px], [5, 12px], [6, 14px], [7, 16px], [8, 18px] ]
+                    weight: bold
+                    transform: uppercase        
+
+#------------------------------------------------
+
+    populated-places-naturalearth:
+        data: { source: mapzen , layer: places}
+        filter: 
+            any:
+                - kind: Populated place
+                - kind: Admin-1 capital
+                - kind: Admin-0 capital
+
+        5M+:
+            filter: { $zoom: { min: 4, max: 8 }, population: { min: 5000000 } }
+            draw:
+                points:
+                    collide: true
+                    color: [0.580, 0.624, 0.659, 1.00]
+                    size: 5px
+                    priority: 1
+                    text:
+                        collide: true
+                        priority: 1
+                        anchor: [top-right, top-left, bottom-right, bottom-left]
+                        font:
+                            size: [[4, 10pt], [5, 10pt], [6, 12pt]]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            order: 70
+
+        5to2.5M:
+            filter: { $zoom: { min: 4, max: 8 }, population: { max: 5000000, min: 2500000 } }
+                #add scale rank 0
+            draw:
+                points:
+                    collide: true
+                    color: [0.580, 0.624, 0.659, 1.00]
+                    size: 5px
+                    priority: 2
+                    text:
+                        collide: true
+                        priority: 2
+                        anchor: [top-right, top-left, bottom-right, bottom-left]
+                        font:
+                            size: [[4, 8pt], [5, 8pt], [6, 10pt]]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            #transform: uppercase
+                            order: 69
+
+        2.5to750K:
+            filter: { $zoom: { min: 6, max: 8 }, population: { min: 750000, max: 2500000 } }
+                #scale rank 1/2
+            draw:
+                points:
+                    #collide: true
+                    color: [0.580, 0.624, 0.659, 1.00]
+                    size: 5px
+                    priority: 3
+                    text:
+                        collide: true
+                        priority: 3
+                        anchor: [top-right, top-left, bottom-right, bottom-left]
+                        font:
+                            size: 8pt
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            #weight: bold
+                            order: 68
+
+        750to250K:
+            filter: { $zoom: { min: 7, max: 8 }, population: { min: 200000, max: 750000 } }
+                #scale rank 1/2
+            draw:
+                points:
+                    #collide: true
+                    color: [0.580, 0.624, 0.659, 1.00]
+                    size: 5px
+                    priority: 4
+                    text:
+                        collide: true
+                        priority: 4
+                        anchor: [top-right, top-left, bottom-right, bottom-left]
+                        font:
+                            size: 8pt
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            #weight: bold
+                            order: 67
+
+#------------------------------------------------
+
+
+    neighborhoods: 
+        data: { source: mapzen , layer: places }
+        filter: 
+            any:
+                - kind: neighbourhood
+                - kind: suburb
+
+        neighborhoods-0:
+            filter: { kind_tile_rank: { max: 2 }, $zoom: { min: 13 }, not: { name: [ "Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island" ] } }
+            draw:
+                text:
+                        collide: true
+                        anchor: center
+                        #anchor: [top-left, top-right, bottom-left, bottom-right]
+                        offset: [0px, 0px]
+                        font:
+                            size: 8pt
+                            family: Open Sans
+                            fill: rgb(112, 112, 112)
+                            weight: bold
+                            transform: uppercase
+                            order: 50
+
+        neighborhoods-1:
+            filter: { kind_tile_rank: { max: 2 }, $zoom: { min: 13 }, not: { name: [ "Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island" ] } }
+            draw:
+                text:
+                        collide: true
+                        anchor: center
+                        #anchor: [top-left, top-right, bottom-left, bottom-right]
+                        font:
+                            size: 8pt
+                            family: Open Sans
+                            fill: rgb(112, 112, 112)
+                            weight: bold
+                            transform: uppercase
+                            order: 50
+
+        neighborhoods-2:
+            filter: { kind_tile_rank: { max: 3 }, $zoom: { min: 14 }, not: { name: [ "Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island" ] } }
+            draw:
+                text:
+                        collide: true
+                        anchor: center
+                        #anchor: [top-left, top-right, bottom-left, bottom-right]
+                        font:
+                            size: 8pt
+                            family: Open Sans
+                            fill: rgb(112, 112, 112)
+                            weight: bold
+                            #transform: uppercase
+                            order: 50
+
+        NYC:
+            filter: { kind: suburb, name: [ "Manhattan", "Queens", "Brooklyn", "The Bronx", "Staten Island" ], $zoom: { min: 9 }  }
+            draw:
+                text:
+                        collide: true
+                        anchor: center
+                        #anchor: [top-left, top-right, bottom-left, bottom-right]
+                        font:
+                            size: 8pt
+                            family: Open Sans
+                            fill: rgb(112, 112, 112)
+                            weight: bold
+                            transform: uppercase
+                            order: 50
+
+#------------------------------------------------
+
+    populated-places-osm:
+        data: { source: mapzen , layer: places}
+        filter: 
+            any:
+                - kind: town
+                - kind: village
+                - kind: city
+                - kind: hamlet
+
+
+        ctv-2M+:
+            filter: { $zoom: { min: 8, max: 13 }, population: true, population: { min: 2000000 }  }
+            draw:
+                points:
+                    color: [0.353, 0.882, 0.420, 0.00]
+                    size: [ [8, 10px], [12, 60px] ]
+                    priority: 1
+                    text:
+                        text_wrap: 10
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        anchor: [center, top, bottom, left, right]
+                        font:
+                            size: [[4, 10pt], [5, 10pt], [6, 12pt], [10, 15pt]]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        ctv-2M-250K:
+            filter: { $zoom: { min: 8, max: 13 }, population: true, population: { max: 2000000, min: 250000 } }
+            draw:
+                points:
+                    color: [0.353, 0.882, 0.420, 0.00]
+                    size: [ [8, 10px], [12, 60px] ]
+                    priority: 2
+                    text:
+                        text_wrap: 10
+                        anchor: [center, top, bottom, left, right]
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: 12pt #[[4, 8pt], [5, 8pt], [6, 10pt], [10, 12pt]]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        ctv-250K-75K:
+            filter: { $zoom: { min: 8, max: 13 }, population: true, population: { max: 250000, min: 75000 } }
+            draw:
+                points:
+                    color: [0.353, 0.882, 0.420, 0.00]
+                    size: 60px
+                    priority: 3
+                    text:
+                        anchor: [center, top, bottom]
+                        text_wrap: 10
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: 10pt #[[8, 8pt], [10, 10pt], [13, 10pt]]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        cities-small:
+            filter: { $zoom: { min: 8, max: 14 }, kind: city, population: true, population: { max: 74900, min: 0 } }
+                #scale rank 1/2
+            draw:
+                points:
+                    color: [0.353, 0.882, 0.420, 0.00]
+                    size: 60px
+                    priority: 4
+                    text:
+                        text_wrap: 10
+                        anchor: [center, top, bottom]
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: 8pt #[[8, 8pt], [10, 8pt], [13, 10pt]]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105) 
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        cities-no-pop:
+            filter: { $zoom: { min: 10, max: 13 }, kind: city, scalerank: [1, 2, 3, 4, 5, 6, 7, 8], population: false}
+                #scale rank 1/2
+            draw:
+                points:
+                    collide: true
+                    color: [0.353, 0.882, 0.420, 0.00]
+                    size: [ [10, 100px], [11, 60px] ]
+                    priority: 10
+                    text:
+                        anchor: [center, top, bottom]
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: 8pt
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        towns-75K-15K:
+            filter: { $zoom: { min: 8, max: 14 }, kind: town, population: true, population: { max: 74999, min: 15000 } }
+                #scale rank 1/2
+            draw:
+                points:
+                    color: [0.500, 0.000, 0.000, 0.00]
+                    size: 80px
+                    priority: 9
+                    text:
+                        anchor: [center, top, bottom, left, right]
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: [ [8, 8pt], [12, 8pt], [15, 12pt] ]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        towns-small:
+            filter: { $zoom: { min: 9, max: 15 }, kind: town, population: true, population: { max: 15000 } }
+                #scale rank 1/2
+            draw:
+                points:
+                    color: [1.000, 0.000, 0.000, 0.00]
+                    size: 120px
+                    priority: 11
+                    text:
+                        anchor: center
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: [ [9, 8pt], [12, 8pt], [15, 12pt] ]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        towns-no-pop:
+            filter: { $zoom: { min: 10, max: 15 }, kind: town, population: false } 
+            draw:
+                points:
+                    color: [1.000, 0.000, 0.000, 0.00]
+                    size: 120px
+                    priority: 12
+                    text:
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        anchor: center
+                        font:
+                            size: [ [9, 8pt], [12, 8pt], [15, 12pt] ]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        villages-75K-15K:
+            filter: { $zoom: { min: 11, max: 15 }, kind: village, scalerank: [1, 2, 3, 4, 5, 6, 7, 8], population: true, population: { max: 75000, min: 15000 } }
+                #scale rank 1/2
+            draw:
+                points:
+                    color: [0.502, 0.000, 0.502, 0.00]
+                    size: [ [11, 100px], [12, 80px], [13, 80px] ]
+                    priority: 15
+                    text:
+                        anchor: [center, top, bottom, left, right]
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: [ [11, 8pt], [12, 8pt], [15, 12pt] ]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        villages-15K-5K:
+            filter: { $zoom: { min: 11, max: 16 }, kind: village, scalerank: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], population: true, population: { max: 15000, min: 5000 } }
+                #scale rank 1/2
+            draw:
+                points:
+                    color: [0.502, 0.000, 0.502, 0.00]
+                    size: [ [11, 150px], [12, 100px], [13, 80px] ]
+                    priority: 16
+                    text:
+                        anchor: [center, top, bottom, left, right]
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: [ [11, 8pt], [12, 8pt], [15, 12pt] ]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        villages-small:
+            filter: { $zoom: { min: 12, max: 16 }, kind: village, scalerank: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], population: true, population: { max: 5000 } }
+                #scale rank 1/2
+            draw:
+                points:
+                    color: [0.502, 0.000, 0.502, 0.00]
+                    size: [ [11, 150px], [12, 150px], [13, 100px] ]
+                    priority: 17
+                    text:
+                        anchor: center
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: [ [12, 8pt], [15, 12pt] ]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+                            
+        villages-no-pop:
+            filter: { $zoom: { min: 12, max: 16 }, kind: village, scalerank: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], population: false } 
+                #scale rank 1/2
+            draw:
+                points:
+                    color: [0.502, 0.000, 0.502, 0.00]
+                    size: [ [11, 100px], [12, 150px], [13, 80px] ]
+                    priority: 18
+                    text:
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        anchor: center
+                        font:
+                            size: 8pt #[ [9, 8pt], [12, 8pt], [13, 10pt], [14, 12pt] ]
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            weight: bold
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        hamlets-mini+:
+            filter: { $zoom: { min: 13, max: 15 }, kind: hamlet, scalerank: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], population: true, population: true }
+                #scale rank 1/2
+            draw:
+                points:
+                    color: [0.502, 0.502, 0.502, 0.00]
+                    size: 100px
+                    priority: 19
+                    text:
+                        anchor: center
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        font:
+                            size: 8pt
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+        hamlets-no-pop:
+            filter: { $zoom: { min: 13, max: 15 }, kind: hamlet, scalerank: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], population: false } 
+                #scale rank 1/2
+            draw:
+                points:
+                    color: [0.502, 0.502, 0.502, 0.00]
+                    size: 120px
+                    priority: 20
+                    text:
+                        text_source: function() { return feature["name:en"] || feature["name"]; }
+                        anchor: center
+                        #anchor: [top-left, top-right, bottom-left, bottom-right]
+                        font:
+                            size: 8pt
+                            family: Open Sans
+                            fill: rgb(105, 105, 105)
+                            stroke:
+                                color: rgb(247, 247, 249)
+                                width: 2px
+
+#------------------------------------------------
+
+    urbanareas: 
+        data: { source: mapzen, layer: landuse }
+        filter: { kind: urban area }
+
+        highzoom:
+            filter: { $zoom: { max: 8 } }
+            draw:
+                polygons:
+                    order: 1
+                    color: rgb(237, 237, 237)
+
+
+#------------------------------------------------
+
+    naturalearthroads:
+        data: { source: mapzen , layer: roads}
+        filter: { kind: Road, $zoom: { min: 5, max: 8 } }
+        draw:
+            lines:
+                order: 2
+                color: rgb(204, 204, 204)
+                width: 1.5px
+                
+#------------------------------------------------
+
+    airports:
+        data: { source: mapzen , layer: roads} 
+        runway:
+            filter: { aeroway: runway, $zoom: { min: 11 } }
+            draw:
+                lines:
+                    order: 40
+                    color: [0.825, 0.825, 0.825, 1.00]
+                    width: [ [12, 1.5px], [14, 4px], [15, 10px], [18, 50px] ]
+        taxiway:
+            filter: { aeroway: taxiway, $zoom: { min: 11 } }
+            draw:
+                lines:
+                    order: 40
+                    color: [0.825, 0.825, 0.825, 1.00]
+                    width: [ [12, 1.5px], [14, 3px], [15, 6px], [18, 40px] ]
+                    join: round
+                    cap: round
+    
+    airports-poi:
+        data: { source: mapzen , layer: pois}
+        
+        poi-label-airport:
+            filter: { $zoom: { min: 12 }, area: { min: 1000000 } }
+            draw:
+                 text:
+                    text_source: function() { return feature["iata"] || feature["iata"]; }
+                    collide: true
+                    anchor: center
+                    #anchor: [top-left, top-right, bottom-left, bottom-right]
+                    offset: [0px, 0px]
+                    text_wrap: 20
+                    font:
+                        size: 12pt
+                        family: Open Sans
+                        fill: [0.635, 0.643, 0.659, 1.00]
+                        weight: bold
+                        order: 543
+                        stroke: { color: white, width: 2 }
+
+#------------------------------------------------
+
+    roads:
+        data: { source: mapzen , layer: roads}
+
+        motorway-high:
+            filter: { highway: motorway, $zoom: { min: 8, max: 14 } }
+            draw:
+                lines:
+                    order: 100
+                    color: rgb(204, 204, 204)
+                    width: [ [8, 1.5px], [10, 2px], [11, 2px], [13, 2.5px], [14, 4px], [15, 6px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0.5px], [11, 1px], [12, 1px]]
+                        join: round
+                        order: 100
+                        cap: butt
+
+        motorway:
+            filter: { highway: motorway, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [ [ 15, 'rgb(204, 204, 204)' ], [ 17, 'rgb(204, 204, 204)' ] ]  
+                    width: [ [8, 1px], [10, 1px], [11, 1.5px], [13, 3.5px], [14, 4px], [15, 6px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0px], [11, 1px], [12, 1.5px]]
+                        join: round
+                        order: 15
+                        cap: butt
+
+        motorway-bridge:
+            filter: { highway: motorway, is_bridge: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [ [ 15, 'rgb(204, 204, 204)' ], [ 17, 'rgb(204, 204, 204)' ] ]  
+                    width: [ [8, 1px], [10, 1px], [11, 1.5px], [13, 3.5px], [14, 4px], [15, 6px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0px], [11, 1px], [12, 1.5px]]
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+        motorway-tunnel:
+            filter: { highway: motorway, is_tunnel: yes, $zoom: { min: 8 } }
+            draw:
+                lines:
+                    color: [0.85, 0.85, 0.85, 1.00]
+
+        motorway-link-tunnel:
+            filter: { highway: motorway_link, is_tunnel: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    color: [0.85, 0.85, 0.85, 1.00]
+
+        motorway-link:
+            filter: { highway: motorway_link, is_link: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [ [ 15, 'rgb(204, 204, 204)' ], [ 17, 'rgb(204, 204, 204)' ] ]  
+                    width: [ [12, 1px], [13, 1.5px], [15, 3px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0px], [11, 1px], [12, 1.5px]]
+                        join: round
+                        order: 15
+                        cap: butt
+
+        motorway-link-bridge:
+            filter: { highway: motorway_link, is_link: yes, is_bridge: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [ [ 15, 'rgb(204, 204, 204)' ], [ 17, 'rgb(204, 204, 204)' ] ]  
+                    width: [ [12, 1px], [13, 1.5px], [15, 3px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0px], [11, 1px], [12, 1.5px]]
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+        trunk-high:
+            filter: { highway: trunk, $zoom: { min: 8, max: 14 } }
+            draw:
+                lines:
+                    order: 99
+                    color: [  [ 15, 'rgb(229, 229, 229)' ], [ 17, 'rgb(229, 229, 229)' ] ]  
+                    width: [ [8, 1px], [10, 1.5px], [11, 1.5px], [13, 2.5px], [14, 4px], [15, 6px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0.5px], [11, 1px], [12, 1px]]
+                        join: round
+                        order: 99
+                        cap: butt  
+
+        trunk:
+            filter: { highway: trunk, $zoom: { min: 8 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [  [ 15, 'rgb(229, 229, 229)' ], [ 17, 'rgb(229, 229, 229)' ] ]  
+                    width: [ [8, 1px], [10, 1.5px], [11, 1.5px], [13, 3.5px], [14, 4px], [15, 6px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0px], [11, 1px], [12, 1.5px]]
+                        join: round
+                        order: 15
+                        cap: butt                    
+
+        trunk-bridge:
+            filter: { highway: trunk, is_bridge: yes, $zoom: { min: 8 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [  [ 15, 'rgb(229, 229, 229)' ], [ 17, 'rgb(229, 229, 229)' ] ]  
+                    width: [ [8, 1px], [10, 1.5px], [11, 1.5px], [13, 3.5px], [14, 4px], [15, 6px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0px], [11, 1px], [12, 1.5px]]
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt  
+
+        trunk-tunnel:
+            filter: { highway: trunk, is_tunnel: yes, $zoom: { min: 8 } }
+            draw:
+                lines:
+                    color: [0.85, 0.85, 0.85, 1.00]
+
+        trunk-labels:
+            filter: { highway: trunk, $zoom: { min: 12 } }
+            draw:                
+                text:
+                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    line_exceed: 70%
+                    articulated: true
+                    spread_factor: 0.5
+                    placement: one
+                    collide: true
+                    anchor: center
+                    #anchor: [top-left, top-right, bottom-left, bottom-right]
+                    offset: [0px, -1px]
+                    repeat_distance: 500px
+                    font:
+                        size: 8pt
+                        family: Open Sans
+                        fill: rgb(110, 110, 110)
+                        #weight: bold
+                        order: 543
+                        stroke: { color: rgb(247, 247, 249), width: 2 }
+
+        tunk-link:
+            filter: { highway: trunk_link, is_link: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [  [ 15, 'rgb(229, 229, 229)' ], [ 17, 'rgb(229, 229, 229)' ] ]  
+                    width: [ [12, 1px], [13, 1.5px], [15, 3px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0px], [11, 1px], [12, 1.5px]]
+                        join: round
+                        order: 15
+                        cap: butt
+
+        tunk-link-bridge:
+            filter: { highway: trunk_link, is_link: yes, is_bridge: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [  [ 15, 'rgb(229, 229, 229)' ], [ 17, 'rgb(229, 229, 229)' ] ]  
+                    width: [ [12, 1px], [13, 1.5px], [15, 3px], [18, 18px], [20, 60px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: [ [8, 'rgb(165, 165, 165)'], [15, 'rgb(165, 165, 165)'], [17, 'rgb(165, 165, 165)'] ]
+                        width: [ [9, 0px], [11, 1px], [12, 1.5px]]
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+        primary-high:
+            filter: { highway: primary, $zoom: { min: 8, max: 14 } }
+            draw:
+                lines:
+                    order: 98
+                    color: [ [9, 'rgb(255, 255, 255)'],  [10, 'rgb(255, 255, 255)' ] ]
+                    width: [ [8, 1.5px], [13, 1.5px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: [ [9, 0px], [10, 0.5px], [13, 1.5px] ]
+                        join: round
+                        order: 98
+                        cap: butt
+
+        primary:
+            filter: { highway: primary, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [ [9, 'rgb(255, 255, 255)'],  [10, 'rgb(255, 255, 255)' ] ]
+                    width: [ [8, 1.5px], [13, 1.5px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: [ [9, 0px], [10, 0.5px], [13, 1.5px] ]
+                        join: round
+                        order: 15
+                        cap: butt
+
+        primary-bridge:
+            filter: { highway: primary, is_bridge: yes, $zoom: { min: 8 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: [ [9, 'rgb(255, 255, 255)'],  [10, 'rgb(255, 255, 255)' ] ]
+                    width: [ [8, 1.5px], [13, 1.5px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: [ [9, 0px], [10, 0.5px], [13, 1.5px] ]
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+        primary-labels:
+            filter: { highway: primary, $zoom: { min: 12 } }
+            draw:
+                text:
+                    line_exceed: 70%
+                    articulated: true
+                    spread_factor: 0.5
+                    placement: one
+                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    collide: true
+                    anchor: center
+                    #anchor: [top-left, top-right, bottom-left, bottom-right]
+                    offset: [0px, -1px]
+                    repeat_distance: 500px
+                    font:
+                        size: 8pt
+                        family: Open Sans
+                        fill: rgb(110, 110, 110)
+                        #weight: bold
+                        order: 543
+                        stroke: { color: rgb(247, 247, 249), width: 2 }
+
+        primary-link:
+            filter: { highway: primary_link, is_link: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [14, 2px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: 15
+                        cap: butt
+
+        primary-link:
+            filter: { highway: primary_link, is_link: yes, is_bridge: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [14, 2px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+        secondary:
+            filter: { highway: secondary, $zoom: { min: 12 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [13, 1.5px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: 15
+                        cap: butt
+
+        secondary-bridge:
+            filter: { highway: secondary, is_bridge: yes, $zoom: { min: 12 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [13, 1.5px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+        secondary-labels:
+            filter: { highway: secondary, $zoom: { min: 14 } }
+            draw:
+                text:
+                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    line_exceed: 70%
+                    articulated: true
+                    spread_factor: 0.5
+                    placement: one
+                    collide: true
+                    anchor: center
+                    #anchor: [top-left, top-right, bottom-left, bottom-right]
+                    offset: [0px, -1px]
+                    repeat_distance: 500px
+                    font:
+                        size: 8pt
+                        family: Open Sans
+                        fill: rgb(110, 110, 110)
+                        #weight: bold
+                        order: 543
+                        stroke: { color: rgb(247, 247, 249), width: 2 }
+
+        secondary-link:
+            filter: { highway: secondary_link, is_link: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [14, 2px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: [ [8, 0px], [9, 1.5px], [18, 3px] ]
+                        join: round
+                        order: 15
+                        cap: butt
+
+        secondary-link-bridge:
+            filter: { highway: secondary_link, is_link: yes, is_bridge: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [14, 2px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: [ [8, 0px], [9, 1.5px], [18, 3px] ]
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+        major-roads:
+            filter: { not: { kind: ferry }, kind: major_road, $zoom: { max: 13 } }
+            draw:
+                lines:
+                    order: 0
+                    color: rgb(211, 211, 211)
+                    width: [ [12, 1px], [14, 1px], [15, 2px] ]
+
+        major:
+            filter: { not: { kind: ferry }, kind: major_road, $zoom: { min: 13 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [13, 1.5px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: 15
+                        cap: butt
+
+        major-bridge:
+            filter: { not: { kind: ferry }, kind: major_road, is_bridge: yes, $zoom: { min: 13 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [13, 1.5px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+        major-labels:
+            filter: { kind: major_road, $zoom: { min: 15 } }
+            draw:
+                text:
+                    line_exceed: 70%
+                    articulated: true
+                    spread_factor: 0.5
+                    placement: one
+                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    collide: true
+                    anchor: center
+                    #anchor: [top-left, top-right, bottom-left, bottom-right]
+                    offset: [0px, -1px]
+                    repeat_distance: 500px
+                    font:
+                        size: 8pt
+                        family: Open Sans
+                        fill: rgb(110, 110, 110)
+                        #weight: bold
+                        order: 543
+                        stroke: { color: rgb(247, 247, 249), width: 2 }           
+
+        major-link:
+            filter: { kind: major_road, is_link: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [14, 2px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: 15
+                        cap: butt
+
+        major-link-bridge:
+            filter: { kind: major_road, is_link: yes, is_bridge: yes, $zoom: { min: 14 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [14, 2px], [15, 4px], [18, 12px], [20, 30px] ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+
+        minor-roads-high:
+            filter: { not: { kind: ferry, highway: service }, kind: minor_road, $zoom: { min: 12, max: 13 } }
+            draw:
+                lines:
+                    order: 14
+                    color: rgb(211, 211, 211)
+                    width: [ [12, 1px], [14, 1px], [15, 2px] ]
+
+        minor-roads:
+            filter: { not: { kind: ferry, highway: service }, kind: minor_road, $zoom: { min: 13, max: 16 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(211, 211, 211)
+                    width: [ [12, 1px], [14, 1px], [15, 2px] ]
+
+        minor-roads-lowzoom:
+            filter: { not: { kind: ferry, highway: service  }, kind: minor_road, $zoom: { min: 16 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [16, 2px], [17, 4px], [20, 24px]  ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: 15
+                        cap: butt
+
+        minor-roads-lowzoom-bridge:
+            filter: { not: { kind: ferry, highway: service  }, kind: minor_road, is_bridge: yes, $zoom: { min: 16 } }
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(255, 255, 255)
+                    width: [ [16, 2px], [17, 4px], [20, 24px]  ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(211, 211, 211)
+                        width: 1.5px
+                        join: round
+                        order: function() { return feature.sort_key; }
+                        cap: butt
+
+        minor-road-labels:
+            filter: { not: { kind: ferry }, kind: minor_road, $zoom: { min: 17 } }
+            draw:
+                text:
+                    line_exceed: 70%
+                    articulated: true
+                    spread_factor: 0.5
+                    placement: one
+                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    collide: true
+                    anchor: center
+                    repeat_group: { kind: minor_road }
+                    repeat_distance: 500px
+                    #anchor: [top-left, top-right, bottom-left, bottom-right]
+                    offset: [0px, 0px]
+                    font:
+                        size: 8pt
+                        family: Open Sans
+                        fill: rgb(110, 110, 110)
+                        #weight: bold
+                        order: 543
+                        stroke: { color: rgb(247, 247, 249), width: 2 }       
+
+        path-high: 
+            filter: { kind: path, not: { footway: crossing }, $zoom: { min: 16 } } 
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(240,240,240)
+                    width: [ [16, 1px], [17, 4px], [20, 10px]  ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(220, 220, 220)
+                        width: 1.5px
+                        join: round
+                        order: 15
+
+        path-high-bridge: 
+            filter: { kind: path, not: { footway: crossing }, is_bridge: yes, $zoom: { min: 16 } } 
+            draw:
+                lines:
+                    order: function() { return feature.sort_key; }
+                    color: rgb(240,240,240)
+                    width: [ [16, 1px], [17, 4px], [20, 10px]  ]
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(220, 220, 220)
+                        width: 1.5px
+                        join: round
+                        order: function() { return feature.sort_key; }
+
+        sidewalk: 
+            filter: { kind: path, footway: sidewalk , $zoom: { min: 16 } } 
+            draw:
+                lines:
+                    order: 13
+                    color: rgb(240,240,240)
+                    width: 0px
+                    join: round
+                    cap: round
+                    outline:
+                        color: rgb(220, 220, 220)
+                        width: 1.5px
+                        join: round
+
+#------------------------------------------------
+
+    rail-lines:
+        data: { source: mapzen , layer: roads}
+        filter: { railway: rail, kind: rail, $zoom: { min: 14 } }
+        draw:
+            lines:
+                order: 30
+                collide: true
+                width: 0.75px
+                color: rgb(201, 201, 201)
+
+        rail-lines-under:
+            filter: { ailway: rail, kind: rail, $zoom: { min: 14 } }
+            draw:
+                rail-dashed-lines:
+                        color: [0.75, 0.75, 0.75, 1.00]
+                        order: 30
+                        collide: true
+                        width: 2px
+                        join: round
+
+    ferry:
+        data: { source: mapzen , layer: roads}
+        filter: { kind: ferry, $zoom: { min: 13 } }
+        draw:
+            ferry-dash:
+                order: 20
+                collide: true
+                width: 1px
+                color: rgb(201, 201, 201)
+
+#------------------------------------------------
+
+    buildings:
+        data: { source: mapzen }
+        filter: 
+            any:
+            - { $zoom: [13],   area: { min: 10000 } }
+            - { $zoom: [14],   area: { min: 5000 } }
+            - { $zoom: [15],   area: { min: 2000 } }
+            - { $zoom: [16],   area: { min: 0 } }
+            - { $zoom: [17],   area: { min: 0 } }
+            - { $zoom: [18],   area: { min: 0 } }
+            - { $zoom: [19],   area: { min: 0 } }
+            - { $zoom: [20],   area: { min: 0 } }
+            - { $zoom: [21],   area: { min: 0 } }
+            - { $zoom: [22],   area: { min: 0 } }
+            - { $zoom: [23],   area: { min: 0 } }
+            - { $zoom: [24],   area: { min: 0 } }
+        draw:
+            polygons:
+                order: 12
+                color: rgb(234, 234, 234)
+            lines:
+                color: rgb(217,217,217)
+                width: 2px
+                order: 13

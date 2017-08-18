@@ -1,7 +1,8 @@
 describe("GeoLife Test Suite", function (){	
 	var GLife;	 
 	beforeEach(function() {
-		GLife = new GEOAPIS_V1.geoLife('<Put your Token Here>');
+		GLife = new GEOAPIS_V1.geoLife('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GLife.apiAddress = 'http://52.5.109.175/geoapis/services';
 	});
 	
 	it("GeoLife ByAddress Valid Parameters", function () {
@@ -54,7 +55,7 @@ describe("GeoLife Test Suite", function (){
 		expect(geo.httpResponse.status).toEqual(400);
     });
 
-	it("GeoLife Async ByAddress Valid Parameters", function () {
+	/*it("GeoLife Async ByAddress Valid Parameters", function () {
         GLife.getDemographicByAddress({address:'1 Global View, Troy, NY', filter:'Agetheme', profile:'top5Descending', country:'USA'}, function(data){
 			expect(data.httpResponse.status).toEqual(200);
 		});
@@ -112,5 +113,5 @@ describe("GeoLife Test Suite", function (){
         GLife.getSegmentationByLocation({latitude:35.0118, longitude:200}, function(data){
 			expect(data.httpResponse.status).toEqual(400);
 		});
-    });
+    });*/
 });

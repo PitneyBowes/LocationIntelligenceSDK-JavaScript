@@ -7,7 +7,7 @@
 
 ### Location Intelligence APIs:
 
-* [GeoEnhance](https://locate.pitneybowes.com/geoenhance.php) : Returns addresses, place names, points-of-interest and timezones with the input of a location coordinate. Useful for enhancing & enriching your geo-tagged data.
+* [GeoEnrich](https://locate.pitneybowes.com/geoenrich ) : Returns addresses, place names, points-of-interest and timezones with the input of a location coordinate. Useful for enhancing & enriching your geo-tagged data.
 
 * [GeoLife](https://locate.pitneybowes.com/geolife.php) : Returns household demographics and lifestyle characteristics with the input of an address or location coordinate. Useful for data analysts and commercial and corporate developers building mobile apps and services.
 
@@ -31,6 +31,7 @@
 
 * [GeoProperty](https://locate.pitneybowes.com/geoproperty):  Property Details. Capture property details for analysis and planning. The GeoProperty API returns extensive property attributes with the input of address or PB key. Critical for any property investment, insurance or risk analysis and mitigation.
 
+* [GeoTime](https://locate.pitneybowes.com/geotime): Local time. The GeoTime API returns timezones and UTC offsets with the input of a location coordinate or address. Useful for do-not-call, logistics, and customer engagement applications, business processes and workflows.
 
 The following platforms are supported by Location Intelligence SDKs:
 *	[Android](https://locate.pitneybowes.com/docs/location-intelligence/v1/en/index.html#Android%20SDK/android_intro.html)

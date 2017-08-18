@@ -1,7 +1,8 @@
 describe("GeoCode Test Suite: getCapabilities", function(){
 	var GC;	
 	beforeEach(function() {
-		GC = new GEOAPIS_V1.geoCode('<Put your Token Here>');
+		GC = new GEOAPIS_V1.geoCode('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GC.apiAddress = 'http://54.86.242.73/geocodeapis/services';
 	});
     it("GeoCode Get Capabilities Valid Parameters", function () {
         var geo = GC.getCapabilities({bundleType:'premium', country:'USA', operation:'geocode'});
@@ -17,7 +18,8 @@ describe("GeoCode Test Suite: getCapabilities", function(){
 describe("GeoCode Test Suite: getConfigureDictionary", function(){
 	var GC;	
 	beforeEach(function() {
-		GC = new GEOAPIS_V1.geoCode('<Put your Token Here>');
+		GC = new GEOAPIS_V1.geoCode('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GC.apiAddress = 'http://54.86.242.73/geocodeapis/services';
 	});
     it("GeoCode Get Dictionary Valid Parameters", function () {
         var geo = GC.getConfigureDictionary({bundleType:'premium', country:'USA'});
@@ -33,7 +35,8 @@ describe("GeoCode Test Suite: getConfigureDictionary", function(){
 describe("GeoCode Test Suite: getGeocode", function(){
 	var GC;	
 	beforeEach(function() {
-		GC = new GEOAPIS_V1.geoCode('<Put your Token Here>');
+		GC = new GEOAPIS_V1.geoCode('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GC.apiAddress = 'http://54.86.242.73/geocodeapis/services';
 	});
     it("GeoCode Get Forward Geocode Valid Parameters", function () {
         var geo = GC.getGeocode({bundleType:'premium', country:'USA', mainAddress:'4750 Walnut St., Boulder CO, 80301', matchMode: 'Standard', fallbackGeo: 'true', fallbackPostal: 'true', maxCands: 1, streetOffset: 7, streetOffsetUnits: 'METERS', cornerOffset: 7, cornerOffsetUnits: 'METERS'});
@@ -54,7 +57,8 @@ describe("GeoCode Test Suite: getGeocode", function(){
 describe("GeoCode Test Suite: getReverseGeocode", function(){
 	var GC;	
 	beforeEach(function() {
-		GC = new GEOAPIS_V1.geoCode('<Put your Token Here>');
+		GC = new GEOAPIS_V1.geoCode('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GC.apiAddress = 'http://54.86.242.73/geocodeapis/services';
 	});
     it("GeoCode Get Reverse Geocode Valid Parameters", function () {
         var geo = GC.getReverseGeocode({bundleType:'premium', x: -105.240976, y: 40.018301, country:'USA', coordSysName: 'EPSG:4326', distance: 7, distanceUnits: 'METERS'});
@@ -85,7 +89,8 @@ describe("GeoCode Test Suite: getReverseGeocode", function(){
 describe("GeoCode Test Suite: getGeocodeAdvanced", function(){
 	var GC;	
 	beforeEach(function() {
-		GC = new GEOAPIS_V1.geoCode('<Put your Token Here>');
+		GC = new GEOAPIS_V1.geoCode('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GC.apiAddress = 'http://54.86.242.73/geocodeapis/services';
 	});
     it("GeoCode Post Forward Geocode Valid Parameters", function () {
         var geo = GC.getGeocodeAdvanced({bundleType:'premium', type: 'ADDRESS', preferences: '{"maxReturnedCandidates":1,"returnAllCandidateInfo":"false","preferredDictionaryOrders":[],"fallbackToGeographic":"true","fallbackToPostal":"true","streetOffset":7,"streetOffsetUnits":"METERS","cornerOffset":7,"cornerOffsetUnits":"METERS","clientLocale":"en_US","clientCoordSysName":"EPSG:4326","matchMode":"STANDARD","mustMatchFields":{"matchOnAddressNumber":"false","matchOnPostCode1":"false","matchOnPostCode2":"false","matchOnAreaName1":"false","matchOnAreaName2":"false","matchOnAreaName3":"false","matchOnAreaName4":"false","matchOnAllStreetFields":"false","matchOnStreetName":"false","matchOnStreetType":"false","matchOnStreetDirectional":"false","matchOnPlaceName":"false","matchOnInputFields":"false"},"returnFieldsDescriptor":{"returnAllCustomFields":"false","returnMatchDescriptor":"false","returnStreetAddressFields":"false","returnUnitInformation":"false","returnedCustomFieldKeys":[""]}}', addresses: '[{"mainAddressLine": "Empire State Building, 350 5th Ave, New York, USA","country": "USA"},{"mainAddressLine": "39 Sycamore Rd,Stafford 08050, USA","country": "USA"}]'});
@@ -116,7 +121,8 @@ describe("GeoCode Test Suite: getGeocodeAdvanced", function(){
 describe("GeoCode Test Suite: getReverseGeocodeAdvance", function(){
 	var GC;	
 	beforeEach(function() {
-		GC = new GEOAPIS_V1.geoCode('<Put your Token Here>');
+		GC = new GEOAPIS_V1.geoCode('Basic bGJzYWRtaW46bGJzYWRtaW4jMQ==');
+		GC.apiAddress = 'http://54.86.242.73/geocodeapis/services';
 	});
     it("GeoCode Post Reverse Geocode Valid Parameters", function () {
         var geo = GC.getReverseGeocodeAdvance({bundleType:'premium', preferences: '{"returnAllCandidateInfo": false,"fallbackToGeographic": true,"fallbackToPostal": true,"maxReturnedCandidates": 1,"distance": 150,"streetOffset": 7,"cornerOffset": 7,"matchMode": "UNSPECIFIED","clientLocale": "en_US","clientCoordSysName": "epsg:4326","distanceUnits": "METERS","streetOffsetUnits": "METERS","cornerOffsetUnits": "METERS","mustMatchFields": {"matchOnAddressNumber": false,"matchOnPostCode1": false,"matchOnPostCode2": false,"matchOnAreaName1": false,"matchOnAreaName2": false,"matchOnAreaName3": false,"matchOnAreaName4": false,"matchOnAllStreetFields": false,"matchOnStreetName": false,"matchOnStreetType": false,"matchOnStreetDirectional": false,"matchOnPlaceName": false,"matchOnInputFields": false},"returnFieldsDescriptor": {"returnAllCustomFields": false,"returnMatchDescriptor": false,"returnStreetAddressFields": false,"returnUnitInformation": false},"customPreferences": {}}', points: '[{"country": "AUS","geometry": {"type": "point","coordinates": [151.196036,-33.879637],"crs": {"type": "name","properties": {"name": "EPSG:4326"}}}}]'});

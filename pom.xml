@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pb.lbs</groupId>
     <artifactId>geojs</artifactId>
-    <version>3.5.0-SNAPSHOT</version>
+    <version>3.6.0-SNAPSHOT</version>
     <name>Javascript LBS client SDK</name>
     <packaging>pom</packaging>
 
@@ -75,7 +75,7 @@
 					  <removeIncluded>true</removeIncluded>				-->	  
 					  <!-- insert new line after each concatenation (default: false) -->
 					  <insertNewLine>false</insertNewLine>
-					  <output>${basedir}/src/main/javascript/LocationIntelligenceSDK-3.5.0-min.js</output>					  
+					  <output>${basedir}/src/main/javascript/LocationIntelligenceSDK-3.6.0-min.js</output>					  
 					  <!-- files to include, path relative to output's directory or absolute path-->
 					  <inputDir>src/main/javascript</inputDir>
 					  <includes>
