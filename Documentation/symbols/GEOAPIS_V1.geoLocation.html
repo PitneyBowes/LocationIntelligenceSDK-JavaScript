@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - GEOAPIS_V1.geoMap</title>
+		<title>JsDoc Reference - GEOAPIS_V1.geoLocation</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -231,7 +231,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Function Namespace GEOAPIS_V1.geoMap
+				Function Namespace GEOAPIS_V1.geoLocation
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -239,16 +239,16 @@ ul.inheritsList
 				
 			
 				
-A geoMap object
+A geoLocation object
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/E__LBS_trunk_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoMap.js.html">geoMap.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/E__LBS_trunk_ClientSDK_Javascript_SDK_src_main_javascript_geojs_v1_geoLocation.js.html">geoLocation.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class GEOAPIS_V1.geoMap.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class GEOAPIS_V1.geoLocation.">
 				<caption>Function Namespace Summary</caption>
 				<thead>
 					<tr>
@@ -261,9 +261,9 @@ A geoMap object
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/GEOAPIS_V1.geoMap.html#constructor">GEOAPIS_V1.geoMap</a></b>(apiKey)
+								<b><a href="../symbols/GEOAPIS_V1.geoLocation.html#constructor">GEOAPIS_V1.geoLocation</a></b>(accessToken)
 							</div>
-							<div class="description">A geoMap object</div>
+							<div class="description">A geoLocation object</div>
 						</td>
 					</tr>
 				</tbody>
@@ -277,7 +277,7 @@ A geoMap object
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class GEOAPIS_V1.geoMap.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class GEOAPIS_V1.geoLocation.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -290,27 +290,27 @@ A geoMap object
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoMap.html#getGeoMap">getGeoMap</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoLocation.html#getLocationByFixedLine">getLocationByFixedLine</a></b>(deviceId, callback)
 								</div>
-								<div class="description">Get GeoMap</div>
+								<div class="description">Location By Fixed Line Network.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoMap.html#getGeoMapRaster">getGeoMapRaster</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoLocation.html#getLocationByIPAddress">getLocationByIPAddress</a></b>(ipAddress, callback)
 								</div>
-								<div class="description">Get GeoMap (Raster)</div>
+								<div class="description">Location By IP Address.</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoMap.html#getGeoMapVector">getGeoMapVector</a></b>(Object, String)
+								<div class="fixedFont"><b><a href="../symbols/GEOAPIS_V1.geoLocation.html#getLocationByWiFiAccessPoint">getLocationByWiFiAccessPoint</a></b>(mac, ssid, rsid, speed, accessPoint)
 								</div>
-								<div class="description">Get GeoMap (Vector)</div>
+								<div class="description">Location by WiFi Access Point.</div>
 							</td>
 						</tr>
 					
@@ -329,11 +329,11 @@ A geoMap object
 				</div>
 				
 				<div class="fixedFont">
-						<b>GEOAPIS_V1.geoMap</b>(apiKey)
+						<b>GEOAPIS_V1.geoLocation</b>(accessToken)
 				</div>
 				
 				<div class="description">
-					A geoMap object
+					A geoLocation object
 					
 				</div>
 				
@@ -345,7 +345,7 @@ A geoMap object
 						<dt class="heading">Parameters:</dt>
 						
 							<dt>
-								 <b>apiKey</b>
+								 <b>accessToken</b>
 								
 							</dt>
 								<dd></dd>
@@ -371,15 +371,15 @@ A geoMap object
 					Method Detail
 				</div>
 				
-					<a name="getGeoMap"> </a>
+					<a name="getLocationByFixedLine"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>getGeoMap</b>(Object, String)
+					<b>getLocationByFixedLine</b>(deviceId, callback)
 					
 					</div>
 					<div class="description">
-						Get GeoMap
+						Location By Fixed Line Network.This service accepts a fixed line phone number and returns the location coordinates corresponding to that phone number.
 						
 						
 					</div>
@@ -392,16 +392,16 @@ A geoMap object
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>Object</b>
+									<b>deviceId</b>
 									
 								</dt>
-								<dd>initialView: this object contains information about initial view. It has three properties {latitude: float, longitude: float, zoom: number} (required)</dd>
+								<dd>This is the fixed line phone number (US only). This is a mandatory parameter. (required)</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>eleId: HTML element Id to render map (required)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -412,7 +412,7 @@ A geoMap object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>map object</dd>
+								<dd>GeoLocation</dd>
 							
 							</dl>
 						
@@ -421,15 +421,15 @@ A geoMap object
 
 					<hr />
 				
-					<a name="getGeoMapRaster"> </a>
+					<a name="getLocationByIPAddress"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>getGeoMapRaster</b>(Object, String)
+					<b>getLocationByIPAddress</b>(ipAddress, callback)
 					
 					</div>
 					<div class="description">
-						Get GeoMap (Raster)
+						Location By IP Address.This service accepts an IP address and returns the location coordinates corresponding to that IP address.
 						
 						
 					</div>
@@ -442,16 +442,16 @@ A geoMap object
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>Object</b>
+									<b>ipAddress</b>
 									
 								</dt>
-								<dd>mapObj: map object to render raster tile layer (required)</dd>
+								<dd>This is the ip address of network connected device. It must be a standard IPv4 octet and a valid external address. (required)</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>callback</b>
 									
 								</dt>
-								<dd>mapStyle: map style bronze/iron/steel (optional)</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -462,7 +462,7 @@ A geoMap object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>map object</dd>
+								<dd>GeoLocation</dd>
 							
 							</dl>
 						
@@ -471,15 +471,15 @@ A geoMap object
 
 					<hr />
 				
-					<a name="getGeoMapVector"> </a>
+					<a name="getLocationByWiFiAccessPoint"> </a>
 					<div class="fixedFont">
 					
 					
-					<b>getGeoMapVector</b>(Object, String)
+					<b>getLocationByWiFiAccessPoint</b>(mac, ssid, rsid, speed, accessPoint)
 					
 					</div>
 					<div class="description">
-						Get GeoMap (Vector)
+						Location by WiFi Access Point.This service accepts a WiFi access point MAC address and returns the location coordinates corresponding to that access point.
 						
 						
 					</div>
@@ -492,16 +492,34 @@ A geoMap object
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>Object</b>
+									<b>mac</b>
 									
 								</dt>
-								<dd>mapObj: map object to render vector tile layer (required)</dd>
+								<dd>This should be the 48 bit mac address (or BSSID) of wireless access point. Accepted format is Six groups of two hexadecimal digits, separated by hyphens (-) or colons. (required)</dd>
 							
 								<dt>
-									<b>String</b>
+									<b>ssid</b>
 									
 								</dt>
-								<dd>mapStyle: map style bronze/iron/steel (optional)</dd>
+								<dd>The service set identifier for wi-fi access point. It should be alphanumeric with maximum 32 characters. (optional)</dd>
+							
+								<dt>
+									<b>rsid</b>
+									
+								</dt>
+								<dd>This is the received signal strength indicator from particular wi-fi access point. It should be a number from -113 to 0 and the unit of this strength is dBm. (optional)</dd>
+							
+								<dt>
+									<b>speed</b>
+									
+								</dt>
+								<dd>This is the connection speed for wi-fi. It should be a number from 0 to 6930 and the unit should be Mbps. (optional)</dd>
+							
+								<dt>
+									<b>accessPoint</b>
+									
+								</dt>
+								<dd>This is the JSON based list of wifi access points in the vicinity of device to be located. This parameter is helpful in case, multiple wifi points are visible and we want to make sure that the location of device is best calculated considering all the access points location. (optional)</dd>
 							
 							</dl>
 						
@@ -512,7 +530,7 @@ A geoMap object
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>map object</dd>
+								<dd>GeoLocation</dd>
 							
 							</dl>
 						

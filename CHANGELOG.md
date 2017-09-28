@@ -1,3 +1,35 @@
+## 3.7.0 - 2017-09-28
+Location by IP Address -Returns the location coordinates corresponding to the IP Address. The service is available globally.
+
+Location by Wifi Access Point MAC Address
+
+Returns the location coordinates corresponding to the MAC Address of WIfi Access Point. This service is also available globally.
+Location by Fixed Line Number
+
+Returns the location coordinates corresponding to the fixed line phone number. This service is available for US fixed line numbers.
+Location by Wireless Number
+
+Returns the location coordinates corresponding to the wireless phone number. This service is available for US wireless phone numbers.
+This service needs approval from wireless carriers as well as the mobile user and therefore has got 4 methods to enable the location check.
+
+
+## 3.6.0 - 2017-08-18
+- GeoSearch API - Support for Multi-Line text search
+   -Three new parameters are added to the GeoSearch API request. Addition of these parameters supports limiting address search to a state, city, and postcode for more relevant results.
+
+- GeoTax API - New Insurance Premium Districts (IPD) Endpoints Added
+  -GET IPD TaxRate - Returns the IPD tax details pertaining to the region in which the input address belongs.
+	-POST IPD TaxRate - Returns the IPD tax details pertaining to the region based on the multiple addresses provided as input.
+
+- GeoTime API - Capture detailed timezone information.
+  -GeoTime API is available globally. GeoTime API has following endpoints:
+  -GET Timezone By Address
+  -GET Timezone By Location
+
+- GeoEnrich API - Existing GeoEnhance API renamed to GeoEnrich
+ -The GeoEnhance API is renamed to GeoEnrich. GeoEnrich API returns addresses, place names, and business listings with the input of a location coordinate.
+ -Timezone By Location endpoint is removed from GeoEnrich API (previously known as GeoEnhance) and made available in GeoTime API.
+ 
 ## 3.5.0 - 2017-06-29
 - GeoProperty API - Capture detailed property information for analysis, planning, and decisions
 - GeoRisk API  - New Endpoints Added
